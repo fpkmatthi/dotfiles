@@ -1,0 +1,20 @@
+*font: xft:DejaVuSansMono\ Nerd\ Font\ Mono:pixelsize=15:style=bold:antialias=true:hinting=true
+
+Xft.dpi: 96
+Xft.antialias: 1
+Xft.autohint: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcdlight
+Xft.rgba: rgb
+
+URxvt.scrollBar: false
+URxvt.internalBorder: 25
+URxvt.perl-ext: default,matcher
+URxvt.url-launcher: chromium
+URxvt.depth: 32
+URxvt.letterSpace: 1
+URxvt.transparant: true
+URxvt.shading: 10
+
+rofi.font: xft:DejaVuSansMono\ Nerd\ Font\ Mono\ 15
