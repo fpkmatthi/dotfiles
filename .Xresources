@@ -1,4 +1,5 @@
-*font: xft:DejaVuSansMono\ Nerd\ Font\ Mono:pixelsize=15:style=bold:antialias=true:hinting=true
+;*font: xft:DejaVuSansMono\ Nerd\ Font\ Mono:pixelsize=13
+*.font: xft:Hack:pixelsize=15
 
 Xft.dpi: 96
 Xft.antialias: 1
