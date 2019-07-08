@@ -184,6 +184,7 @@ client.background       #ffffff
 gaps inner 8
 gaps outer 8
 
+
 ### Launch custom modules
 # Set X keyboard layout
 exec_always --no-startup-id setxkbmap be
@@ -203,7 +204,7 @@ exec_always --no-startup-id wal -i "$($HOME/.scripts/get-random-wallpaper.sh)" -
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Launch Compton
-exec --no-startup-id compton -b
+exec_always --no-startup-id $HOME/.config/launch-compton.sh
 
 # Execute i3lock on lid close
 exec_always --no-startup-id xss-lock -- $HOME/.scripts/lock.sh &
