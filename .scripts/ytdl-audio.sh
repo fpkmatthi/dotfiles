@@ -2,7 +2,7 @@
 
 # use %(title) instead of songname
 #songname=$1
-link=$2
+link=$1
 
 ### TODO: add song to old-data.txt and check if song is already present on download 
 usage()
