@@ -1,16 +1,19 @@
 #!/bin/dash
 
-songname=$1
+# use %(title) instead of songname
+#songname=$1
 link=$2
 
 ### TODO: add song to old-data.txt and check if song is already present on download 
 usage()
 {
-    echo "Usage: ytdl-audio.sh <name> <link>"
+    #echo "Usage: ytdl-audio.sh <name> <link>"
+    echo "Usage: ytdl-audio.sh <link>"
 }
 
 main() {
-    youtube-dl -o "$HOME/Music/$songname.%(ext)s" --extract-audio --audio-format mp3 $link
+    #youtube-dl -o "$HOME/Music/$songname.%(ext)s" --extract-audio --audio-format mp3 $link
+    youtube-dl -o "$HOME/Music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 $link
 }
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then

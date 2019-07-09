@@ -192,19 +192,18 @@ exec_always --no-startup-id setxkbmap be
 # Apply  .Xresources
 exec_always --no-startup-id xrdb $HOME/.Xresources
 
-# Launch PyWal
-# TODO 
-exec_always --no-startup-id wal -i "$($HOME/.scripts/get-random-wallpaper.sh)" -a 70
-
-# Apply background with feh
-# TODO
-# exec_always --no-startup-id feh --bg-fill "$($HOME/.scripts/get-random-wallpaper.sh)"
-
 # Launch Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Launch Compton
 exec_always --no-startup-id $HOME/.config/launch-compton.sh
+
+
+# Launch PyWal
+exec_always --no-startup-id wal -i "$($HOME/.scripts/get-random-wallpaper.sh)" -a 70
+
+# Apply background with feh
+# exec_always --no-startup-id feh --bg-fill "$($HOME/.scripts/get-random-wallpaper.sh)"
 
 # Execute i3lock on lid close
 exec_always --no-startup-id xss-lock -- $HOME/.scripts/lock.sh &

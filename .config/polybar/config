@@ -41,7 +41,7 @@ dpi = -1
 
 modules-left = i3
 modules-center = mpd 
-;modules-right = xbacklight alsa memory cpu temperature wlan eth battery date powermenu
+;modules-right = updates-arch-combined system-nvidia-bbswitch xbacklight alsa memory cpu temperature wlan eth battery date powermenu
 modules-right = alsa memory cpu wlan eth vpn-nordvpn-status battery date powermenu
 
 tray-position = right
@@ -366,6 +366,17 @@ type = custom/script
 exec = $HOME/.scripts/vpn-nordvpn-status.sh --status
 click-left = $HOME/.scripts/vpn-nordvpn-status.sh --switch
 interval = 1
+
+[module/system-nvidia-bbswitch]
+type = custom/script
+exec = $HOME/.scripts/system-nvidia-bbswitch.sh
+interval = 5
+click-left = "optirun -b none nvidia-settings -c :8"
+
+[module/updates-arch-combined]
+type = custom/script
+exec = $HOME/.scripts/updates-arch-combined.sh
+interval = 600
 
 [settings]
 screenchange-reload = true
