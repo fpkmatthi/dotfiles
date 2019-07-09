@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 ### TODO: add options like --switch to switch state and --show to show state
 usage()
@@ -16,13 +16,13 @@ main() {
     STATUS=$(nordvpn status | grep Status | tr -d ' ' | cut -d ':' -f2)
 
     if [ "$STATUS" = "Connected" ]; then
-	if [ "$1" == "switch" ]; then
+	if [ "$1" = "switch" ]; then
             nordvpn disconnect > /dev/null 2>&1 && echo "%{F#f54242}ﱾ%{F-}" 
         else
 	    echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
 	fi
     else
-	if [ "$1" == "switch" ]; then
+	if [ "$1" = "switch" ]; then
             nordvpn connect > /dev/null 2>&1 && echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
         else
 	    echo "%{F#f54242}ﱾ%{F-}"

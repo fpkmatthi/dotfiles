@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish

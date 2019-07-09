@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 
 if [ "$#" -le 0 ]; then
     echo "Please specify one file"
