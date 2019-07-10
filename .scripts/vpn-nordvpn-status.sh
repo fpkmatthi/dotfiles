@@ -7,29 +7,33 @@ usage()
     echo ""
     echo "./simple_args_parsing.sh"
     echo "-h --help"
-    echo "--environment=$ENVIRONMENT"
-    echo "--db-path=$DB_PATH"
     echo ""
 }
 
 main() {
-    STATUS=$(nordvpn status | grep Status | tr -d ' ' | cut -d ':' -f2)
+    action=$1
+    status=$(nordvpn status | grep Status | tr -d ' ' | cut -d ':' -f2)
+    isVpnProcessRunning=$(ps -A | egrep "nordvpn$" | tr -d " \n\r\t " | head -c1 | wc -c)
 
-    if [ "$STATUS" = "Connected" ]; then
-	if [ "$1" = "switch" ]; then
-            nordvpn disconnect > /dev/null 2>&1 && echo "%{F#f54242}ﱾ%{F-}" 
-        else
-	    echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
+    if [ "$status" = "Connected" ]; then
+	if [ "$action" = "switch" ]; then
+	    # disconnect && echo "shield" 
+            nordvpn disconnect > /dev/null 2>&1 & #&& echo "%{F#f54242}ﱾ%{F-}" 
+        elif [ "$action" = "status" ]; then
+	    # echo "busy or shield ip" 
+	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ%{F-} Busy"; else echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"; fi
 	fi
-    else
-	if [ "$1" = "switch" ]; then
-            nordvpn connect > /dev/null 2>&1 && echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
-        else
-	    echo "%{F#f54242}ﱾ%{F-}"
+    elif [ "$status" = "Disconnected" ]; then
+        if [ "$action" = "switch" ]; then
+	    # connect && echo "shield ip" 
+            nordvpn connect > /dev/null 2>&1 & #&& echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
+        elif [ "$action" = "status" ]; then
+	    # echo "shield" 
+	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ%{F-} Busy"; else echo "%{F#f54242}ﱾ%{F-}"; fi
 	fi
-        
     fi
 }
+
 
 while [ "$1" != "" ]; do
     PARAM=`echo $1 | awk -F= '{print $1}'`
@@ -40,7 +44,7 @@ while [ "$1" != "" ]; do
             exit
             ;;
         --status)
-            main 
+            main status 
             ;;
         --switch)
             main switch

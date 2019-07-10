@@ -2,7 +2,7 @@
 
 killall -q polybar
 
-while pgrep -u "$(id -ru)" -x polybar >/dev/null ;do sleep 0.5; done
+while pgrep -u "$(id -ru)" -x polybar >/dev/null ;do sleep 1; done
 
 polybar main &
 

@@ -40,9 +40,10 @@ tray-maxsize = 16
 dpi = -1
 
 modules-left = i3
-modules-center = mpd 
+modules-center = mpd alsa 
 ;modules-right = updates-arch-combined system-nvidia-bbswitch xbacklight alsa memory cpu temperature wlan eth battery date powermenu
-modules-right = alsa memory cpu wlan eth vpn-nordvpn-status battery date powermenu
+modules-right = vpn-nordvpn-status wlan eth memory cpu battery date powermenu
+separator = " ⏽ "
 
 tray-position = right
 tray-padding = 2
@@ -143,7 +144,7 @@ type = internal/cpu
 interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color1:#f90000}
+;format-underline = ${xrdb:color1:#f90000}
 label = %percentage:2%%
 
 [module/memory]
@@ -151,7 +152,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color1:#4bffdc}
+;format-underline = ${xrdb:color1:#4bffdc}
 label = %percentage_used%%
 
 [module/wlan]
@@ -160,7 +161,7 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${xrdb:color1:#9f78e1}
+;format-connected-underline = ${xrdb:color1:#9f78e1}
 label-connected = %essid%
 
 ;format-disconnected =
@@ -181,7 +182,7 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -201,9 +202,9 @@ date-alt = %Y-%m-%d
 time = %H:%M
 time-alt = %H:%M:%S
 
-;format-prefix = 
+;format-prefix = Date:
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color1:#0a6cf5}
+;format-underline = ${xrdb:color1:#0a6cf5}
 
 label = "%date% %time%"
 
@@ -271,15 +272,15 @@ full-at = 98
 time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${xrdb:color1:#ffb52a}
+;format-charging-underline = ${xrdb:color1:#ffb52a}
 
 ;format-discharging = <animation-discharging> <label-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = #60f542
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 
 
 green = #60f542
@@ -319,9 +320,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${xrdb:color1:#f50a4d}
+;format-underline = ${xrdb:color1:#f50a4d}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
