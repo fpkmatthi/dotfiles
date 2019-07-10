@@ -198,12 +198,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Launch Compton
 exec_always --no-startup-id $HOME/.config/launch-compton.sh
 
+# Launch Redshift
+exec_always --no-startup-id $HOME/.config/redshift/launch.sh
 
 # Launch PyWal
 exec_always --no-startup-id wal -i "$($HOME/.scripts/get-random-wallpaper.sh)" -a 70
-
-# Launch Redshift
-redshift -l 50.8503:4.3517
 
 # Apply background with feh
 # exec_always --no-startup-id feh --bg-fill "$($HOME/.scripts/get-random-wallpaper.sh)"
