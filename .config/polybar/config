@@ -41,8 +41,8 @@ dpi = -1
 
 modules-left = i3
 modules-center = mpd alsa 
-;modules-right = updates-arch-combined system-nvidia-bbswitch xbacklight alsa memory cpu temperature wlan eth battery date powermenu
-modules-right = vpn-nordvpn-status wlan eth memory cpu battery date powermenu
+;modules-right = system-usb-udev updates-arch-combined system-nvidia-bbswitch xbacklight alsa memory cpu temperature wlan eth battery date powermenu
+modules-right = updates-arch-combined vpn-nordvpn-status wlan eth memory cpu battery date powermenu
 separator = " ⏽ "
 
 tray-position = right
@@ -196,7 +196,7 @@ format-disconnected = <label-disconnected>
 type = internal/date
 interval = 5
 
-date =
+date = ""
 date-alt = %Y-%m-%d
 
 time = %H:%M
@@ -354,6 +354,13 @@ click-left = "optirun -b none nvidia-settings -c :8"
 type = custom/script
 exec = $HOME/.scripts/updates-arch-combined.sh
 interval = 600
+
+[module/system-usb-udev]
+type = custom/script
+exec = $HOME/.scripts/system-usb-udev.sh
+tail = true
+click-left = $HOME/.scripts/system-usb-udev.sh --mount
+click-right = $HOME/.scripts/system-usb-udev.sh --unmount
 
 [settings]
 screenchange-reload = true
