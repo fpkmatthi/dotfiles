@@ -13,7 +13,7 @@ usage()
 
 main() {
     #youtube-dl -o "$HOME/Music/$songname.%(ext)s" --extract-audio --audio-format mp3 $link
-    youtube-dl -o "$HOME/Music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 $link
+    youtube-dl -o "$HOME/Downloads/ytdl-music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 $link
 }
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
