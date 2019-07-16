@@ -1,4 +1,5 @@
-*font: xft:DejaVuSansMono\ Nerd\ Font\ Mono:pixelsize=13
+;*font: xft:DejaVuSansMono\ Nerd\ Font\ Mono:pixelsize=13
+*font: xft:Hack\ Nerd\ Font\ Mono:pixelsize=13
 
 Xft.dpi: 96
 Xft.antialias: 1
@@ -16,6 +17,6 @@ URxvt.depth: 32
 URxvt.letterSpace: 1
 URxvt.transparant: true
 URxvt.shading: 10
-;URxvt.font: xft:Hack:pixelsize=15
+URxvt.font: xft:Hack\ Nerd\ Font\ Mono:pixelsize=15:style=Bold
 
-rofi.font: xft:DejaVuSansMono\ Nerd\ Font\ Mono\ 15
+;rofi.font: xft:DejaVuSansMono\ Nerd\ Font\ Mono\ 15
