@@ -29,9 +29,6 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
 
-;font-0 = fixed:pixelsize=10
-;font-0 = "Hack:pixelsize=13:style=Bold"
-;font-1 = "Hack:pixelsize=19:style=Bold"
 ;font-0 = Inconsolata:size=12:style=Bold
 font-0 = "DejaVuSansMono Nerd Font:pixelsize=13:style=bold"
 font-1 = "DejaVuSansMono Nerd Font:pixelsize=19"
