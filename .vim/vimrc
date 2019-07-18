@@ -3,49 +3,52 @@
 so $HOME/.vim/plugins.vim
 
 " Options {{{
-"set autochdir
-"set breakindent
-"set conceallevel=2
-"set cursorline
-"set encoding=utf-8
-"set expandtab
-"set foldmethod=marker
-"set hlsearch
-"set ignorecase
-"set incsearch
+set autochdir
+set breakindent
+set conceallevel=2
+set cursorline
+set encoding=utf-8
+set expandtab
+set foldmethod=marker
+set hlsearch
+set ignorecase
+set incsearch
 set laststatus=2
-"set lazyredraw
-"set linebreak
-"set list
-"set listchars=tab:▶▬
-"set mouse=
-"set noruler
+set lazyredraw
+set linebreak
+set list
+set listchars=tab:▶▬
+set mouse=
+set noruler
 set noshowmode
-"set nrformats-=octal
-"set number relativenumber
-"set scrolloff=5
-"set shiftwidth=4
-"set shortmess=F
-"set showbreak=↪\
-"set showcmd
-"set showmatch
-"set smartcase
-"set smarttab
-"set softtabstop=4
-"set splitbelow
-"set splitright
-"set t_Co=256
-"set timeoutlen=1000
-"set ttimeoutlen=0
-"set ttyfast
-"set undodir=~/.vim/undodir
-"set undofile
-"set viminfo+=n~/.vim/viminfo
-"set wildmenu
-"set wrap
+set nrformats-=octal
+set number relativenumber
+set scrolloff=5
+set shiftwidth=4
+set shortmess=F
+set showbreak=↪\
+set showcmd
+set showmatch
+set smartcase
+set smarttab
+set softtabstop=4
+set splitbelow
+set splitright
+set t_Co=256
+set timeoutlen=1000
+set ttimeoutlen=0
+set ttyfast
+set undodir=~/.vim/undodir
+set undofile
+set viminfo+=n~/.vim/viminfo
+set wildmenu
+set wrap
 syntax on
-" }}}
+highlight LineNr ctermbg=None
+highlight CursorLine ctermbg=None
+highlight CursorLine cterm=underline
 
+" }}}
 
 " Augroup {{{
 " }}}

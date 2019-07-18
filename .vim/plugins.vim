@@ -2,11 +2,23 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+" Plug 'dylanaraps/wal.vim'
+" Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/lightline.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
+" Plug 'maximbaz/lightline-ale'
+" Plug 'maximbaz/lightline-trailing-whitespace'
+" Plug 'mboughaba/i3config.vim'
+Plug 'mhinz/vim-startify'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 "Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
@@ -39,16 +51,46 @@ let g:lightline = {
     \ }
 " }}}
 
-" Solarized options {{{
-syntax enable
-"set background=light
+" Solarized Options {{{
 let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+"let g:solarized_termtrans=1
 "let g:solarized_underline=1
-colorscheme solarized
-set background=dark
 highlight clear SignColumn
-:call gitgutter#highlight#define_sign_column_highlight()
+ set background=dark
+"set background=light
+ colorscheme solarized
+" Custom function to togglebetween light and dark background to keep the
+" CursorLine settings since the default way of the solarized plugin also
+" changes the CursorLine settings
+function Togglebackground()
+    let &background = ( &background == "dark"? "light" : "dark" ) 
+    highlight LineNr ctermbg=None
+    highlight CursorLine ctermbg=None
+    highlight CursorLine cterm=underline
+endfunction
+map <F5> :call Togglebackground()<cr>
 " }}}
 
+" Omnisharp Options {{{
+let g:OmniSharp_server_stdio = 1
+" }}}
+
+" Vimwiki Options {{{
+set nocompatible
+filetype plugin on
+" }}}
+
+" FZF Options {{{
+    
+" }}}
+
+" Wal Options {{{
+" colorscheme wal
+" }}}
+
+" Vim-latex-live-preview Options {{{
+map <Leader>c :LLPStartPreview<cr>
+let g:livepreview_previewer = "zathura"
+" let g:livepreview_cursorhold_recompile = 0
+" }}}
 " }}}
