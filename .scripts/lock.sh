@@ -34,9 +34,9 @@ i3lock \
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
 --keylayout 2         \
-
-# --veriftext="Drinking verification can..."
-# --wrongtext="Nope!"
+\
+--veriftext="Hmmmm..." \
+--wrongtext="Nope!"   \
 # --textsize=20
 # --modsize=10
 # --timefont=comic-sans
