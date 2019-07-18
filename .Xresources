@@ -10,7 +10,8 @@ Xft.lcdfilter: lcdlight
 Xft.rgba: rgb
 
 URxvt.scrollBar: false
-URxvt.internalBorder: 25
+;URxvt.internalBorder: 25
+URxvt.internalBorder: 3
 URxvt.perl-ext: default,matcher
 URxvt.url-launcher: chromium
 URxvt.depth: 32
