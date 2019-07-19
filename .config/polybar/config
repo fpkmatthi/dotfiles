@@ -333,31 +333,31 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/script
 exec = "echo ⏼"
-click-left = $HOME/.scripts/powermenu.sh
+click-left = $HOME/.config/polybar/scripts/powermenu.sh
 
 [module/vpn-nordvpn-status]
 type = custom/script
-exec = $HOME/.scripts/vpn-nordvpn-status.sh --status
-click-left = $HOME/.scripts/vpn-nordvpn-status.sh --switch
+exec = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --status
+click-left = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --switch
 interval = 1
 
 [module/system-nvidia-bbswitch]
 type = custom/script
-exec = $HOME/.scripts/system-nvidia-bbswitch.sh
+exec = $HOME/.config/polybar/scripts/system-nvidia-bbswitch.sh
 interval = 5
 click-left = "optirun -b none nvidia-settings -c :8"
 
 [module/updates-arch-combined]
 type = custom/script
-exec = $HOME/.scripts/updates-arch-combined.sh
+exec = $HOME/.config/polybar/scripts/updates-arch-combined.sh
 interval = 600
 
 [module/system-usb-udev]
 type = custom/script
-exec = $HOME/.scripts/system-usb-udev.sh
+exec = $HOME/.config/polybar/scripts/system-usb-udev.sh
 tail = true
-click-left = $HOME/.scripts/system-usb-udev.sh --mount
-click-right = $HOME/.scripts/system-usb-udev.sh --unmount
+click-left = $HOME/.config/polybar/scripts/system-usb-udev.sh --mount
+click-right = $HOME/.config/polybar/scripts/system-usb-udev.sh --unmount
 
 [settings]
 screenchange-reload = true

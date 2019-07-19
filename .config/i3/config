@@ -127,8 +127,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
+# TODO: custom rofi menu
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec "$HOME/.scripts/close-i3.sh"
+bindsym $mod+Shift+e exec $HOME/.config/i3/scripts/close-i3.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -198,25 +199,25 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id $HOME/.config/redshift/launch.sh
 
 # Launch PyWal
-exec_always --no-startup-id wal -i "$($HOME/.scripts/get-random-wallpaper.sh)" -a 70
+exec_always --no-startup-id wal -i "$($HOME/.config/i3/scripts/get-random-wallpaper.sh)" -a 70
 
 # Launch Compton
 exec_always --no-startup-id $HOME/.config/compton/launch-compton.sh
 
 # Apply background with feh
-# exec_always --no-startup-id feh --bg-fill "$($HOME/.scripts/get-random-wallpaper.sh)"
+# exec_always --no-startup-id feh --bg-fill "$($HOME/i3/scripts/get-random-wallpaper.sh)"
 
 # Execute i3lock on lid close
-exec_always --no-startup-id xss-lock -- $HOME/.scripts/lock.sh &
+exec_always --no-startup-id xss-lock -- $HOME/.config/i3/scripts/lock.sh &
 
 
 ### Custom keybinds
 # Switch between swapping and unswapping caps and escape key
-bindsym $mod+Shift+s exec $HOME/.scripts/swap-esc-caps.sh on
-bindsym $mod+Shift+u exec $HOME/.scripts/swap-esc-caps.sh off
+bindsym $mod+Shift+s exec $HOME/.config/i3/scripts/swap-esc-caps.sh on
+bindsym $mod+Shift+u exec $HOME/.config/i3/scripts/swap-esc-caps.sh off
 
 # Execute i3lock
-bindsym $mod+Shift+x exec $HOME/.scripts/lock.sh
+bindsym $mod+Shift+x exec $HOME/.config/i3/scripts/lock.sh
 
 # Bindsym rofi
 # TODO

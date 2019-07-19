@@ -1,3 +1,3 @@
 #!/bin/dash
 
-neofetch --ascii "$(dash $HOME/Documents/Color-Scripts/color-scripts/elfman)" | lolcat
+neofetch --ascii "$(dash $HOME/.ascii/elfman.sh)" | lolcat
