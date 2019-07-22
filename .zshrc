@@ -108,7 +108,8 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config='/usr/bin/git --git-dir=/home/fpkmatthi/.cfg/ --work-tree=/home/fpkmatthi'
+# alias config='/usr/bin/git --git-dir=/home/fpkmatthi/.cfg/ --work-tree=/home/fpkmatthi'
+source $HOME/.config/zsh/aliases.sh
 
 # }}}
 
