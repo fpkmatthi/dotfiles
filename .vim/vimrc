@@ -1,6 +1,7 @@
 " Title: vimrc
 
 so $HOME/.vim/plugins.vim
+so $HOME/.vim/latex-shortcuts.vim
 
 " Options {{{
 set autochdir
