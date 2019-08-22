@@ -96,8 +96,14 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
 # }}}
+
+# Shell variables {{{
+export TERMINAL="urxvt"
+export BROWSER="chromium"
+export XDG_CONFIG_HOME="$HOME/.config"
+# }}}
+
 
 # Alias' {{{
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -114,22 +120,28 @@ source $HOME/.config/zsh/aliases.sh
 # }}}
 
 
-# FZF
+# FZF {{{
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+# export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info --preview='(bat --theme=TwoDark {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden:wrap' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+})'"
+export FZF_DEFAULT_OPTS="--height 60% --reverse --preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500' --preview-window=down:10"
+export FD_OPTS="--type f --type l --follow --exclude .git" 
+export FZF_DEFAULT_COMMAND="fd $FD_OPTS"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }}}
 
-# Correction {{{
+
+ #Correction {{{
 setopt correct # spelling correction for commands
 setopt correctall # spelling correction for arguments
 
 # }}}
 
-
-
 # Auto Completion {{{
 setopt always_to_end # When completing from the middle of a word, move the cursor to the end of the word
-setopt auto_menu # show completion menu on successive tab press. needs unsetop menu_complete to work
-setopt auto_name_dirs # any parameter that is set to the absolute name of a directory immediately becomes a name for that directory
+setopt auto_menu # Show completion menu on successive tab press. needs unsetop menu_complete to work
+setopt auto_name_dirs # Zny parameter that is set to the absolute name of a directory immediately becomes a name for that directory
 setopt complete_in_word # Allow completion from within a word/phrase
 unsetopt menu_complete # do not autoselect the first completion entry
 
@@ -184,3 +196,4 @@ zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain h
 zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
 zstyle '*' single-ignored show
 # }}}
+
