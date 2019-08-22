@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'ajh17/VimCompletesMe'
 Plug 'altercation/vim-colors-solarized'
 " Plug 'dylanaraps/wal.vim'
 " Plug 'easymotion/vim-easymotion'
@@ -8,7 +9,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
+Plug 'kovetskiy/sxhkd-vim'
+" Plug 'lervag/vimtex'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'nicholaides/words-to-avoid.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -19,11 +23,14 @@ Plug 'tpope/vim-eunuch'
 " Plug 'mboughaba/i3config.vim'
 Plug 'mhinz/vim-startify'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
 " Plug 'SirVer/ultisnips'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-"Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
@@ -96,5 +103,17 @@ filetype plugin on
 map <Leader>c :LLPStartPreview<cr>
 let g:livepreview_previewer = "zathura"
 " let g:livepreview_cursorhold_recompile = 0
+" }}}
+
+" Nvim-R Options {{{
+let R_openpdf = 1
+" }}}
+
+" Easy-align Options {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " }}}
 " }}}

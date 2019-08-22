@@ -1,7 +1,8 @@
 " Title: vimrc
 
 so $HOME/.vim/plugins.vim
-so $HOME/.vim/latex-shortcuts.vim
+so $HOME/.vim/shortcuts.vim
+
 
 " Options {{{
 set autochdir
@@ -103,3 +104,8 @@ highlight CursorLine cterm=underline
 
 
 " }}}
+
+" FilType recognition {{{
+" let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
+"}}}
