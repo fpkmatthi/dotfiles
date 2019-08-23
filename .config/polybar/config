@@ -89,7 +89,7 @@ scroll-down = bspwm-deskprev
 ; Module layout {{{
 modules-left = bspwm RightArrow3 mpd RightArrow2 xwindow
 modules-center = MiddleArrowLeft date MiddleArrowRight 
-modules-right = LeftStripe1 LeftStripe2 alsa LeftArrow2 updates-arch-combined LeftArrow1 nordvpn LeftArrow3 wlan eth LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = LeftStripe1 weather LeftStripe2 alsa LeftArrow2 updates-arch-combined LeftArrow1 nordvpn LeftArrow3 wlan eth LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery ;LeftArrow3 ;powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -459,6 +459,17 @@ format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
 ; }}}
 
+; Weather {{{
+[module/weather]
+type = custom/text
+content = "  "
+click-left = $HOME/.config/polybar/scripts/weather.sh -n 1
+click-right = $HOME/.config/polybar/scripts/weather.sh -n 2
+click-middle = $HOME/.config/polybar/scripts/weather.sh -n 3
+content-foreground = ${colors.xcolor7}
+content-background = ${colors.xcolor1}
+; }}}
+
 
 ; Testing {{{
 ; Volume {{{
@@ -528,15 +539,6 @@ empty-notifications = false
 label =  %notifications%
 ; }}}
 
-; Weather {{{
-[module/weather]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/weather.py
-interval = 120
-label = "  %output:0:22:...% "
-format-foreground = ${colors.xcolor1}
-format-background = ${colors.xcolor7}
-; }}}
 ; }}}
 
 ; Not used {{{

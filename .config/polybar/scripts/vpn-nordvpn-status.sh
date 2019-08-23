@@ -21,7 +21,7 @@ main() {
             nordvpn disconnect > /dev/null 2>&1 & #&& echo "%{F#f54242}ﱾ%{F-}" 
         elif [ "$action" = "status" ]; then
 	    # echo "busy or shield ip" 
-	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ%{F-} Busy"; else echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"; fi
+	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ Busy%{F-}"; else echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"; fi
 	fi
     elif [ "$status" = "Disconnected" ]; then
         if [ "$action" = "switch" ]; then
@@ -29,7 +29,7 @@ main() {
             nordvpn connect > /dev/null 2>&1 & #&& echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
         elif [ "$action" = "status" ]; then
 	    # echo "shield" 
-	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ%{F-} Busy"; else echo "%{F#f54242}ﱾ%{F-}"; fi
+	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ Busy%{F-}"; else echo "%{F#f54242}ﱾ%{F-}"; fi
 	fi
     fi
 }

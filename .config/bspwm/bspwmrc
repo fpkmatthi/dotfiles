@@ -8,6 +8,7 @@ wal -i "/home/fpkmatthi/Pictures/Wal/deathstar-landscape.png" -a 70
 $HOME/.config/polybar/launch.sh
 $HOME/.config/compton/launch-compton.sh
 $HOME/.config/redshift/launch.sh
+dunst &
 # }}}
 
 # Things to start late {{{
