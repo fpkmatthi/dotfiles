@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # Things to start early {{{
-sxhkd &
 setxkbmap be
+sxhkd &
 xrdb $HOME/.Xresources
 wal -i "/home/fpkmatthi/Pictures/Wal/deathstar-landscape.png" -a 70
 $HOME/.config/polybar/launch.sh
-$HOME/.config/compton/launch-compton.sh
+$HOME/.config/compton/launch.sh
 $HOME/.config/redshift/launch.sh
+# $HOME/.config/dunst/launch.sh
 dunst &
 # }}}
 

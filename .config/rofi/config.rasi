@@ -1,9 +1,12 @@
 configuration {
-    theme: ".config/rofi/onedark.rasi";
-    font: "DejaVuSansMono Nerd Font 12";
-    lines:                  7;
-    separator-style:        "solid";
+    show-icons:             true;
+    font:                   "Hack Nerd Font 12";
+    cycle:                  true;
     hide-scrollbar:         true;
+    disable-history:        false;
+    modi:                   "drun";
+    display-drun:           "apps";
+    columns:                2;
     kb-mode-previous:       "Control+h";
     kb-row-down:            "Control+j";
     kb-row-up:              "Control+k";
@@ -11,4 +14,5 @@ configuration {
     kb-accept-entry:        "Return,KP_Enter";
     kb-remove-to-eol:       "";
     kb-remove-char-back:    "BackSpace,Shift+BackSpace";
+
 }

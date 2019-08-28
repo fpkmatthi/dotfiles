@@ -1,25 +1,61 @@
+# TODO: implement azerty
+# {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
 # wm independent hotkeys {{{
+
+# Programs{{{
+# alt + {Return, m, w, c, v, b, n}
+    # {$TERMINAL, $TERMINAL -e ncmpcpp, $TERMINAL -e vim -c VimwikiIndex, $TERMINAL -e calcurse, $TERMINAL -e vifm, $BROWSER, $TERMINAL -e neomutt}
 
 alt + Return
     $TERMINAL
 
-alt + shift + m
+alt + m
     $TERMINAL -e ncmpcpp
 
+# TODO: check for no duplicate of alt+w
 alt + w
+# alt + shift + w
+    $TERMINAL -e vim -c VimwikiIndex
+
+alt + c
+    $TERMINAL -e calcurse
+
+alt + v
+    $TERMINAL -e vifm
+
+alt + b
+# alt + w
     $BROWSER
 
-# super + d
-#     dmenu_run
+alt + n
+    $TERMINAL -e neomutt
+# }}}
 
+# Actions{{{
 alt + d
-    rofi -modi window,drun,run -show drun -sidebar-mode -terminal rxvt-unicode-256color 
+    $HOME/.config/rofi/bin/appmenu
 
+alt + shift + m
+    $HOME/.config/rofi/bin/mpdmenu
+
+# Toggle shiftlock esc swap on or off 
 alt + shift + {s,u}
-    {$HOME/.config/i3/scripts/swap-esc-caps.sh on, $HOME/.config/i3/scripts/swap-esc-caps.sh off}
+    {$HOME/.config/i3/scripts/swap-esc-caps.sh on && notify-send "Escape key swapped", $HOME/.config/i3/scripts/swap-esc-caps.sh off && notify-send "Escape key reset"}
 
 alt + shift + x
     $HOME/.config/i3/scripts/lock.sh
+
+alt + x
+    $HOME/.config/rofi/bin/powermenu
+    # $HOME/.config/polybar/scripts/powermenu.sh
+
+# screenshot
+alt + shift + p
+    $HOME/.config/rofi/bin/scrotmenu
+    # maim $HOME/Pictures/screenshot/pic-full-$(date +'%d-%m-%Y-%H-%M-%S').png && notify-send "Screenshot saved $(date +'%d-%m-%Y-%H-%M-%S').png"
+
+alt + shift + n
+    $HOME/.config/rofi/bin/networkmenu
 
 
 # make sxhkd reload its configuration files:
@@ -39,13 +75,7 @@ XF86MonBrightnessUp
     light -A 10 
 XF86MonBrightnessDown 
     light -U 10 
-
-
-alt + shift + p
-    maim pic-full-$(date '+%y%m%d-%H%M-%S').png
-
-alt + x
-    $HOME/.config/polybar/scripts/powermenu.sh
+# }}}
 
 # }}}
 
@@ -56,20 +86,20 @@ alt + shift + {e,r}
     bspc {quit,wm -r}
 
 # close and kill
-alt + {_,shift + }q
-    bspc node -{c,k}
+alt + shift + q
+    bspc node -k
 
-# alternate between the tiled and monocle layout
-alt + m
-    bspc desktop -l next
+# # alternate between the tiled and monocle layout
+# alt + m
+#     bspc desktop -l next
 
-# send the newest marked node to the newest preselected node
-alt + y
-    bspc node newest.marked.local -n newest.!automatic.local
+# # send the newest marked node to the newest preselected node
+# alt + y
+#     bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
-alt + g
-    bspc node -s biggest
+# # swap the current node and the biggest node
+# alt + g
+#     bspc node -s biggest
 
 # }}}
 
@@ -91,66 +121,53 @@ alt + ctrl + {m,x,y,z}
 alt + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
-alt + {p,b,comma,period}
-    bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node in the current desktop
-alt + {_,shift + }c
-    bspc node -f {next,prev}.local
-
 # focus the next/previous desktop in the current monitor
 alt + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-alt + {grave,Tab}
-    bspc {node,desktop} -f last
-
-# focus the older or newer node in the focus history
-alt + {o,i}
-    bspc wm -h off; \
-    bspc node {older,newer} -f; \
-    bspc wm -h on
+alt + Tab
+    bspc desktop -f last
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
+alt + {_,shift + }{ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc {desktop -f,node -d} '^{1-9,10}'
-
+# alt + {_,shift + }{1-9,0}
+    # bspc {desktop -f,node -d} '^{1-9,10}'
 # }}}
 
 # preselect {{{
 
 # preselect the direction
-alt + ctrl + {h,j,k,l}
+super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
 
 # preselect the ratio
-alt + ctrl + {1-9}
+super + ctrl + {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc node -o 0.{1-9}
+# super + ctrl + {1-9}
+#     bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-alt + ctrl + space
+super + ctrl + space
     bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-alt + ctrl + shift + space
+super + ctrl + shift + space
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
 # }}}
 
 # move/resize {{{
 
 # expand a window by moving one of its side outward
-ctrl + shift + {h,j,k,l}
+super + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-alt + ctrl + shift + {h,j,k,l}
+super + shift {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-ctrl + {h,j,k,l}
+super + shift + ctrl + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
-
 # }}}

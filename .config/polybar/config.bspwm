@@ -66,10 +66,9 @@ module-margin-right = 0
 
 ; Fonts {{{
 ;font-0 = Inconsolata:size=12:style=Bold
-font-0 = "DejaVuSansMono Nerd Font:pixelsize=11;2"
-font-1 = "Hack Nerd Font:pixelsize=15;3"
-font-2 = "Hack Nerd Font:pixelsize=16;4"
-font-3 = "Hack Nerd Font:pixelsize=18;7"
+font-0 = "DejaVuSansMono Nerd Font:pixelsize=11:style=bold"
+font-1 = "DejaVuSansMono Nerd Font:pixelsize=19"
+font-2 = "Hack Nerd Font Mono:pixelsize=19"
 ; }}}
 
 ; Tray {{{
@@ -87,9 +86,14 @@ scroll-down = bspwm-deskprev
 ; }}}
 
 ; Module layout {{{
-modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 xwindow
+modules-left = bspwm RightArrow3
 modules-center = MiddleArrowLeft date MiddleArrowRight 
-modules-right = alsa LeftStripe1 updates-arch-combined LeftArrow3 weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager ;wlan ;eth LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = arrow1 LeftStripe arrow1 mpd alsa updates-arch-combined nordvpn wlan eth memory cpu battery powermenu
+; separator = " ⏽ "
+; modules-left = bspwm  weather RightArrow2 mail RightArrow1 powermenu music
+; modules-center = MiddleArrowLeft date MiddleArrowRight
+; modules-right = arrow1 LeftStripe arrow1 volume arrow2 network ssh vpn arrow3 cpu arrow2 memory arrow3 filesystem arrow2 temperature arrow3 battery
+
 # }}}
 
 ; Cursor layout {{{
@@ -99,8 +103,8 @@ cursor-click = pointer
 
 
 ; Bspwm settings {{{
-; General {{{
 [module/bspwm]
+; General {{{
 type = internal/bspwm
 ; Only show workspaces defined on the same output as the bar
 pin-workspaces = true
@@ -123,22 +127,22 @@ label-focused = 
 label-focused-foreground = ${colors.xcolor7}
 label-focused-background = ${colors.xcolor1}
 label-focused-padding = 2
-label-focused-font = 1
+label-focused-font = 3
 label-occupied = 
 label-occupied-foreground = ${colors.xcolor0}
 label-occupied-background = ${colors.xcolor1}
 label-occupied-padding = 2
-label-occupied-font = 1
+label-occupied-font = 3
 label-urgent = 
 label-urgent-foreground = ${colors.xcolor4}
 label-urgent-background = ${colors.xcolor1}
 label-urgent-padding = 2
-label-urgent-font = 1
+label-urgent-font = 3
 label-empty = 
 label-empty-foreground = ${colors.xcolor0}
 label-empty-background = ${colors.xcolor1}
 label-empty-padding = 2
-label-empty-font = 1
+label-empty-font = 3
 
 ; ws-icon-[0-9]+ = label;icon
 ; Note that the label needs to correspond with the bspwm workspace name
@@ -157,73 +161,72 @@ label-empty-font = 1
 
 ; Modules {{{
 ; Powerline separators {{{
-[module/LeftStripe1]
+[module/Pipe]
 type = custom/text
-content = "%{T3}%{T-}"
-content-foreground = ${colors.xcolor1}
+content = "|"
+content-foreground = ${colors.darkgrey}
 content-background = ${colors.xcolor0}
+content-padding = 1
 
-[module/LeftStripe2]
+[module/LeftStripe]
 type = custom/text
-content = "%{T3}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor0}
 content-background = ${colors.xcolor1}
 
-[module/LeftArrow1]
+[module/arrow1]
 type = custom/text
-content = "%{T3}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor7}
-
-[module/LeftArrow2]
-type = custom/text
-content = "%{T3}%{T-}"
-content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor0}
 
-[module/LeftArrow3]
+[module/arrow2]
 type = custom/text
-content = "%{T3}%{T-}"
+content = " "
 content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor1}
 
+[module/arrow3]
+type = custom/text
+content = " "
+content-foreground = ${colors.xcolor1}
+content-background = ${colors.xcolor7}
+
 [module/RightStripe]
 type = custom/text
-content = "%{T2}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor0}
 content-background = ${colors.xcolor1}
 
 [module/RightArrow1]
 type = custom/text
-content = "%{T2}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 
 [module/RightArrow2]
 type = custom/text
-content = "%{T2}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor7}
-content-background = ${colors.xcolor0}
+content-background = ${colors.xcolor1}
 
 [module/RightArrow3]
 type = custom/text
-content = "%{T2}%{T-}"
+content = ""
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor7}
 
 [module/MiddleArrowLeft]
-;
 type = custom/text
-content = "%{T4}%{T-}"
+content = "◥"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
-
+;◥ ◤◢ ◣
 [module/MiddleArrowRight]
-;
 type = custom/text
-content = "%{T4}%{T-}"
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor0}
+content = "◤"
+content-foreground = ${colors.xcolor0}
+content-background = ${colors.xcolor1}
 ; }}}
 
 ; Xwindow {{{
@@ -233,23 +236,21 @@ type = internal/xwindow
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor0}
 
-label = "» %title:0:40:...%"
+label = "» %title:0:22:...%"
 ; }}}
 
 ; MPD {{{
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-format-online-foreground = ${colors.xcolor1}
-format-online-background = ${colors.xcolor7}
 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
+icon-prev = 
 icon-stop = 
 icon-play = 
 icon-pause = 
-icon-prev = 
 icon-next = 
 
 toggle-on-foreground = ${colors.primary}
@@ -261,9 +262,9 @@ toggle-off-foreground = #66
 type = internal/cpu
 interval = 2
 format-prefix = ""
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color1:#f90000}
 label = %percentage:2%%
-format-foreground = ${colors.xcolor1}
-format-background = ${colors.xcolor7}
 ; }}}
 
 ; RAM {{{
@@ -271,62 +272,80 @@ format-background = ${colors.xcolor7}
 type = internal/memory
 interval = 2
 format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color1:#4bffdc}
 label = %percentage_used%%
-format-foreground = ${colors.xcolor7}
-format-background = ${colors.xcolor1}
 ; }}}
 
-; NetworkManager {{{
-[module/network-networkmanager]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/network-networkmanager.sh
-click-left = $HOME/.config/rofi/bin/networkmenu
-tail = true
+; WLAN {{{
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
 
-format-foreground = ${colors.xcolor1}
-format-background = ${colors.xcolor7}
+format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = ${xrdb:color1:#9f78e1}
+label-connected = %essid%
+
+;format-disconnected =
+format-disconnected = <label-disconnected>
+label-disconnected = 睊
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 睊
+ramp-signal-1 = 直
+ramp-signal-2 = 直
+ramp-signal-3 = 直
+ramp-signal-4 = 直
+ramp-signal-foreground = ${colors.foreground-alt}
 ; }}}
 
-; Filesystem {{{
-[module/filesystem]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/filesystem.sh
-internal = 60
+; ETH {{{
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
 
-format-foreground = ${colors.xcolor1}
-format-background = ${colors.xcolor7}
+;format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = 
+;label-disconnected-foreground = ${colors.foreground-alt}
 ; }}}
 
 ; Date {{{
 [module/date]
 type = internal/date
-interval = 20
+interval = 5
 
-; date = ""
+date = ""
+date-alt = %Y-%m-%d
+
 time = %H:%M
+time-alt = %H:%M:%S
 
-date-alt = %d-%m-%Y
-time-alt = %H:%M
+;format-prefix = Date:
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = ${xrdb:color1:#0a6cf5}
 
-label = %date% %time%
-
-; format = " <label>"
-format = "<label> "
-format-foreground = ${colors.xcolor0}
-format-background = ${colors.xcolor1}
-
+label = "%date% %time%"
 ; }}}
 
 ; Alsa {{{
 [module/alsa]
 type = internal/alsa
 
-format-volume = "<label-volume> <bar-volume> "
+format-volume = <label-volume> <bar-volume>
 label-volume = 墳 
-label-volume-foreground = ${colors.xcolor7}
+label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " 婢"
-format-muted-foreground = ${colors.xcolor7}
+format-muted-prefix = "婢 "
+format-muted-foreground = ${colors.foreground-alt}
 label-muted = " " 
 
 bar-volume-width = 10
@@ -344,7 +363,7 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.xcolor1}
+bar-volume-empty-foreground = ${colors.foreground-alt}
 ; }}}
 
 ; Battery {{{
@@ -357,28 +376,23 @@ full-at = 98
 time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = ${colors.xcolor7}
-format-charging-background = ${colors.xcolor1}
-label-charging-foreground = ${colors.xcolor7}
+;format-charging-underline = ${xrdb:color1:#ffb52a}
 
+;format-discharging = <animation-discharging> <label-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${colors.xcolor1}
-format-discharging-foreground = ${colors.xcolor7}
-label-discharging-foreground = ${colors.xcolor7}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = #60f542
-format-full-foreground = ${colors.xcolor7}
-format-full-background = ${colors.xcolor1}
+;format-full-underline = ${self.format-charging-underline}
+
 
 green = #60f542
 red = #f54242
 orange = #f5bc42
 
 ramp-capacity-0 = "%{F#f54242}%{F-}"
-ramp-capacity-0-foreground = ${colors.xcolor4}
 ramp-capacity-1 = "%{F#f54242}%{F-}"
-ramp-capacity-1-foreground = ${colors.xcolor4}
 ramp-capacity-2 = "%{F#f5bc42}%{F-}"
 ramp-capacity-3 = "%{F#f5bc42}%{F-}"
 ramp-capacity-4 = "%{F#f5bc42}%{F-}"
@@ -387,6 +401,8 @@ ramp-capacity-6 = "%{F#60f542}%{F-}"
 ramp-capacity-7 = "%{F#60f542}%{F-}"
 ramp-capacity-8 = "%{F#60f542}%{F-}"
 ramp-capacity-9 = "%{F#60f542}%{F-}"
+ramp-capacity-10 = "%{F#60f542}%{F-}"
+;ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -394,6 +410,13 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
 ; }}}
 
 ; Temperature {{{
@@ -419,12 +442,9 @@ ramp-foreground = ${colors.foreground-alt}
 
 ; Powermenu {{{
 [module/powermenu]
-type = custom/text
-content = "⏼ "
-; click-left = $HOME/.config/polybar/scripts/powermenu.sh
-click-left = $HOME/.config/rofi/bin/powermenu
-content-foreground = ${colors.xcolor1}
-content-background = ${colors.xcolor7}
+type = custom/script
+exec = "echo ⏼"
+click-left = $HOME/.config/polybar/scripts/powermenu.sh
 ; }}}
 
 ; Nordvpn {{{
@@ -433,35 +453,13 @@ type = custom/script
 exec = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --status
 click-left = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --switch
 interval = 1
-format-foreground = ${colors.xcolor7}
-format-background = ${colors.xcolor1}
 ; }}}
 
 ; Arch updates {{{
 [module/updates-arch-combined]
 type = custom/script
-exec = $HOME/.config/polybar/scripts/updates-arch-combined.sh -u
-click-left = $HOME/.config/polybar/scripts/updates-arch-combined.sh -o
+exec = $HOME/.config/polybar/scripts/updates-arch-combined.sh
 interval = 600
-format-foreground = ${colors.xcolor7}
-format-background = ${colors.xcolor1}
-; }}}
-
-; Weather {{{
-[module/weather]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/weather.sh -f 1
-
-click-left = $HOME/.config/polybar/scripts/weather.sh -n 1
-click-right = $HOME/.config/polybar/scripts/weather.sh -n 2
-click-middle = $HOME/.config/polybar/scripts/weather.sh -n 3
-double-click-left = $HOME/.config/polybar/scripts/weather.sh -t 1
-double-click-right = $HOME/.config/polybar/scripts/weather.sh -t 2
-double-click-middle = $HOME/.config/polybar/scripts/weather.sh -t 3
-
-format = <label>
-format-foreground = ${colors.xcolor1}
-format-background = ${colors.xcolor7}
 ; }}}
 
 
@@ -532,45 +530,19 @@ empty-notifications = false
 ; Default: Notifications: %notifications%
 label =  %notifications%
 ; }}}
+
+; Weather {{{
+[module/weather]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/weather.py
+interval = 120
+label = "  %output:0:22:...% "
+format-foreground = ${colors.xcolor1}
+format-background = ${colors.xcolor7}
 ; }}}
-;
+; }}}
+
 ; Not used {{{
-; WLAN {{{
-[module/wlan]
-type = internal/network
-interface = wlp2s0
-interval = 3.0
-
-
-format-connected = <label-connected>
-label-connected = "直 %essid%"
-label-connected-foreground = ${colors.xcolor1}
-label-connected-background = ${colors.xcolor7}
-
-;format-disconnected =
-format-disconnected = <label-disconnected>
-label-disconnected = 睊
-label-disconnected-foreground = ${colors.xcolor1}
-label-disconnected-background = ${colors.xcolor7}
-; }}}
-
-; ETH {{{
-[module/eth]
-type = internal/network
-interface = enp3s0
-interval = 3.0
-
-;format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = 
-;label-disconnected-foreground = ${colors.foreground-alt}
-; }}}
-
 ; Pulseaudio {{{
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -619,6 +591,8 @@ click-left = $HOME/.config/polybar/scripts/system-usb-udev.sh --mount
 click-right = $HOME/.config/polybar/scripts/system-usb-udev.sh --unmount
 ; }}}
 ; }}}
+; }}}
+
 
 ; [settings]
 ; screenchange-reload = true

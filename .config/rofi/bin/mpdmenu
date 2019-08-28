@@ -1,0 +1,4 @@
+#!/bin/dash
+
+$HOME/.config/rofi/scripts/mpdmenu.sh
+
