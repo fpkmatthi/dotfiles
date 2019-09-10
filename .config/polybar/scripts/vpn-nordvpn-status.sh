@@ -16,21 +16,29 @@ main() {
     isVpnProcessRunning=$(ps -A | egrep "nordvpn$" | tr -d " \n\r\t " | head -c1 | wc -c)
 
     if [ "$status" = "Connected" ]; then
-	if [ "$action" = "switch" ]; then
-	    # disconnect && echo "shield" 
+        if [ "$action" = "switch" ]; then
+            # disconnect && echo "shield" 
             nordvpn disconnect > /dev/null 2>&1 & #&& echo "%{F#f54242}ﱾ%{F-}" 
         elif [ "$action" = "status" ]; then
-	    # echo "busy or shield ip" 
-	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ Busy%{F-}"; else echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"; fi
-	fi
+            # echo "busy or shield ip" 
+            if [ $isVpnProcessRunning = 1 ]; then
+                echo "%{F#fcbe42}ﱾ Busy%{F-}"
+            else
+                echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
+            fi
+        fi
     elif [ "$status" = "Disconnected" ]; then
         if [ "$action" = "switch" ]; then
-	    # connect && echo "shield ip" 
+            # connect && echo "shield ip" 
             nordvpn connect > /dev/null 2>&1 & #&& echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
         elif [ "$action" = "status" ]; then
-	    # echo "shield" 
-	    if [ $isVpnProcessRunning = 1 ]; then echo "%{F#fcbe42}ﱾ Busy%{F-}"; else echo "%{F#f54242}ﱾ%{F-}"; fi
-	fi
+            # echo "shield" 
+            if [ $isVpnProcessRunning = 1 ]; then
+                echo "%{F#fcbe42}ﱾ Busy%{F-}"
+            else
+                echo "%{F#f54242}ﱾ%{F-}"
+            fi
+        fi
     fi
 }
 

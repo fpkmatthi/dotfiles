@@ -35,9 +35,9 @@ foreground-alt = ${xrdb:color7}
 [bar/main]
 ; Bar layout {{{
 monitor = ${env:MONITOR:eDP-1}
-width = 90%
+width = 96%
 height = 23
-offset-x = 5%
+offset-x = 2%
 offset-y = 1%
 bottom=false
 fixed-center = true
@@ -89,7 +89,7 @@ scroll-down = bspwm-deskprev
 ; Module layout {{{
 modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 xwindow
 modules-center = MiddleArrowLeft date MiddleArrowRight 
-modules-right = alsa LeftStripe1 updates-arch-combined LeftArrow3 weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager ;wlan ;eth LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -122,22 +122,22 @@ reverse-scroll = false
 label-focused = 
 label-focused-foreground = ${colors.xcolor7}
 label-focused-background = ${colors.xcolor1}
-label-focused-padding = 2
+label-focused-padding = 1
 label-focused-font = 1
 label-occupied = 
 label-occupied-foreground = ${colors.xcolor0}
 label-occupied-background = ${colors.xcolor1}
-label-occupied-padding = 2
+label-occupied-padding = 1
 label-occupied-font = 1
 label-urgent = 
 label-urgent-foreground = ${colors.xcolor4}
 label-urgent-background = ${colors.xcolor1}
-label-urgent-padding = 2
+label-urgent-padding = 1
 label-urgent-font = 1
 label-empty = 
 label-empty-foreground = ${colors.xcolor0}
 label-empty-background = ${colors.xcolor1}
-label-empty-padding = 2
+label-empty-padding = 1
 label-empty-font = 1
 
 ; ws-icon-[0-9]+ = label;icon
@@ -420,7 +420,8 @@ ramp-foreground = ${colors.foreground-alt}
 ; Powermenu {{{
 [module/powermenu]
 type = custom/text
-content = "⏼ "
+; content = "⏼ "
+content = " ⏻ "
 ; click-left = $HOME/.config/polybar/scripts/powermenu.sh
 click-left = $HOME/.config/rofi/bin/powermenu
 content-foreground = ${colors.xcolor1}
@@ -451,6 +452,7 @@ format-background = ${colors.xcolor1}
 [module/weather]
 type = custom/script
 exec = $HOME/.config/polybar/scripts/weather.sh -f 1
+interval = 10
 
 click-left = $HOME/.config/polybar/scripts/weather.sh -n 1
 click-right = $HOME/.config/polybar/scripts/weather.sh -n 2
@@ -462,6 +464,15 @@ double-click-middle = $HOME/.config/polybar/scripts/weather.sh -t 3
 format = <label>
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
+; }}}
+
+; System usb dev {{{
+[module/system-usb-udev]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/system-usb-udev.sh
+tail = true
+click-left = $HOME/.config/polybar/scripts/system-usb-udev.sh --mount
+click-right = $HOME/.config/polybar/scripts/system-usb-udev.sh --unmount
 ; }}}
 
 
@@ -532,8 +543,27 @@ empty-notifications = false
 ; Default: Notifications: %notifications%
 label =  %notifications%
 ; }}}
+
+; Nvidia bbswitch {{{
+[module/system-nvidia-bbswitch]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/system-nvidia-bbswitch.sh
+interval = 5
+click-left = "optirun -b none nvidia-settings -c :8"
 ; }}}
-;
+
+
+; Signal {{{
+[module/signal]
+; TODO
+; }}}
+
+; Mail {{{
+[module/mail]
+; TODO
+; }}}
+; }}}
+
 ; Not used {{{
 ; WLAN {{{
 [module/wlan]
@@ -602,22 +632,6 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 ; }}}
 
-; Nvidia bbswitch {{{
-[module/system-nvidia-bbswitch]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/system-nvidia-bbswitch.sh
-interval = 5
-click-left = "optirun -b none nvidia-settings -c :8"
-; }}}
-
-; System usb dev {{{
-[module/system-usb-udev]
-type = custom/script
-exec = $HOME/.config/polybar/scripts/system-usb-udev.sh
-tail = true
-click-left = $HOME/.config/polybar/scripts/system-usb-udev.sh --mount
-click-right = $HOME/.config/polybar/scripts/system-usb-udev.sh --unmount
-; }}}
 ; }}}
 
 ; [settings]

@@ -2,9 +2,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 " Plug 'dylanaraps/wal.vim'
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
+Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
@@ -13,17 +14,22 @@ Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
 " Plug 'lervag/vimtex'
 " Plug 'ludovicchabant/vim-gutentags'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'nicholaides/words-to-avoid.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'maximbaz/lightline-trailing-whitespace'
-" Plug 'mboughaba/i3config.vim'
 Plug 'mhinz/vim-startify'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'PProvost/vim-ps1'
+Plug 'scrooloose/nerdtree'
 " Plug 'SirVer/ultisnips'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -40,16 +46,19 @@ call plug#end()
 let g:gitgutter_enabled = 1
 let g:gitgutter_eager = 0
 let g:gitgutter_max_signs = 500  " default value
+let g:gitgutter_highlight_lines = 0
 let g:gitgutter_override_sign_column_highlight = 0
-" TODO: sprinkle some colours
-set updatetime=250
+" TODO: edit gutter colours
+" highlight GitGutterAdd ctermfg=2 ctermbg=0
+" highlight GitGutterChange ctermfg=3 ctermbg=0
+" highlight GitGutterDelete ctermfg=1 ctermbg=0
 
 " No mappings set by gitgutter with let g:gitgutter_map_keys = 0
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterUndoHunk
-nmap <Leader>hp <Plug>GitGutterPreviewHunk
+nmap <leader>nh <Plug>GitGutterNextHunk
+nmap <leader>Nh <Plug>GitGutterPrevHunk
+nmap <Leader>gsh <Plug>GitGutterStageHunk
+nmap <Leader>guh <Plug>GitGutterUndoHunk
+nmap <Leader>gph <Plug>GitGutterPreviewHunk
 omap ih <Plug>GitGutterTextObjectInnerPending
 omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
@@ -58,26 +67,32 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 " Lightline Options {{{
 let g:lightline = {
-    \ 'colorscheme': 'one',
-    \ }
+    \ 'colorscheme': 'PaperColor',
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+\ }
 " }}}
 
-" Solarized Options {{{
-let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
-"let g:solarized_underline=1
+" Color scheme Options {{{
 highlight clear SignColumn
- set background=dark
-"set background=light
- colorscheme solarized
-" Custom function to togglebetween light and dark background to keep the
+set background=dark
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+\   'theme': {
+\     'default': {
+\       'transparent_background': 1
+\     }
+\   }
+\ }
+" Custom function to toggle between light and dark background to keep the
 " CursorLine settings since the default way of the solarized plugin also
 " changes the CursorLine settings
 function Togglebackground()
     let &background = ( &background == "dark"? "light" : "dark" ) 
     highlight LineNr ctermbg=None
     highlight CursorLine ctermbg=None
-    highlight CursorLine cterm=underline
+    highlight CursorLine cterm=Underline
+    highlight CursorLineNr ctermbg=None
 endfunction
 map <F5> :call Togglebackground()<cr>
 " }}}
@@ -115,5 +130,25 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" }}}
+
+" Easy-motion {{{
+nmap s <Plug>(easymotion-overwin-f)
+" Avoid repetitive use of the h j k l keys.
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+" replace default forward slash searching
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+
+let g:EasyMotion_smartcase = 1
+
+
 " }}}
 " }}}

@@ -4,10 +4,11 @@
 
 check_connection() { 
     # TODO: ping wttr.in
-    ping -q -c 1 8.8.8.8 >/dev/null || echo "Cannot connect to service" || notify-send "Cannot connect to service" || exit 1
+    ping -q -c 1 wttr.in >/dev/null 2>&1  #&& notify-send "Cannot connect to weather service" && exit 1
 }
 
 update() {
+    check_connection
     # min: 1
     # max: 3
     # current day=1, etc
@@ -63,12 +64,11 @@ usage () {
     echo "    -t -- show the ouput in a terminal"
 }
 
-check_connection
 
 case $1 in
     -f|--forecast)
         # 1, 2 or 3
-        update $2 && echo "  "
+        update $2 && echo "" || exit 1
         ;;
     -n|--notify)
         pgrep -x dunst >/dev/null && notify-send  "$(update $2 && showweather)"

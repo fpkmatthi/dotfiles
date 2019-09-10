@@ -7,7 +7,7 @@ autocmd FileType tex inoremap ;s \section{}<Enter><Enter><++><Esc>2k$F{a
 autocmd FileType tex inoremap ;ss \subsection{}<Enter><Enter><++><Esc>2k$F{a
 autocmd FileType tex inoremap ;sss \subsubsection{}<Enter><Enter><++><Esc>2k$F{a
 autocmd FileType tex inoremap ;be \begin{enumerate}<Enter>\item<Space><Enter>\end{enumerate}<Enter><++><Esc>2k$a
-autocmd FileType tex inoremap ;bi \begin{itemize}<Enter>\item<Space><Enter>\end{enumerate}<Enter><++><Esc>2k$a
+autocmd FileType tex inoremap ;bi \begin{itemize}<Enter>\item<Space><Enter>\end{itemize}<Enter><++><Esc>2k$a
 autocmd FileType tex inoremap ;l \label{}<++><Esc>F{a
 autocmd FileType tex inoremap ;b \textbf{}<++><Esc>F{a
 autocmd FileType tex inoremap ;i \textit{}<++><Esc>F{a

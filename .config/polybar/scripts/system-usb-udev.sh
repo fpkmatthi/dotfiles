@@ -17,7 +17,7 @@ usb_print() {
         fi
         counter=$((counter + 1))
 
-        output="$output$space#1 $unmounted"
+        output="$output$space $unmounted"
     done
 
     for mounted in $(echo "$devices" | jq -r '.blockdevices[] | select(.type == "part") | select(.rm == true) | select(.mountpoint != null) | .size'); do
@@ -28,7 +28,7 @@ usb_print() {
         fi
         counter=$((counter + 1))
 
-        output="$output$space#2 $mounted"
+        output="$output$space $mounted"
     done
 
     echo "$output"
@@ -42,7 +42,7 @@ usb_update() {
     fi
 }
 
-path_pid="/home/fpkmatthi/.config/polybar/system-usb-udev.pid"
+path_pid="$HOME/.config/polybar/scripts/system-usb-udev.pid"
 
 case "$1" in
     --update)
@@ -60,7 +60,7 @@ case "$1" in
 
             mountpoint=$(udisksctl mount --no-user-interaction -b "$mount")
             mountpoint=$(echo "$mountpoint" | cut -d " " -f 4 | tr -d ".")
-            urxvt -hold -e cd "$mountpoint" &
+            $TERMINAL -e ranger "$mountpoint"
         done
 
         usb_update

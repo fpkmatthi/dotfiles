@@ -43,7 +43,7 @@ network_print() {
                 printf '%s %s' "$icon" "$description"
 
                 if [ "$CONNECTION_COUNT" -ne $counter ]; then
-                    printf "     "
+                    printf "    "
                 else
                     printf "\n"
                 fi
