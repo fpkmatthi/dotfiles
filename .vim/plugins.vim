@@ -1,3 +1,6 @@
+" Title: plugins
+
+" Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
@@ -9,11 +12,12 @@ Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
 " Plug 'lervag/vimtex'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'nicholaides/words-to-avoid.vim'
 Plug 'NLKNguyen/papercolor-theme'
@@ -26,8 +30,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'mhinz/vim-startify'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
-Plug 'PotatoesMaster/i3-vim-syntax'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'PProvost/vim-ps1'
 Plug 'scrooloose/nerdtree'
 " Plug 'SirVer/ultisnips'
@@ -39,15 +43,21 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
-
+" }}}
 
 " Plugin Options {{{
+" Remap leader {{{
+let mapleader = ","
+" }}}
+
 " Git Gutter {{{
 let g:gitgutter_enabled = 1
 let g:gitgutter_eager = 0
 let g:gitgutter_max_signs = 500  " default value
 let g:gitgutter_highlight_lines = 0
 let g:gitgutter_override_sign_column_highlight = 0
+" gutter symbols
+let g:gitgutter_sign_removed = '-'
 " TODO: edit gutter colours
 " highlight GitGutterAdd ctermfg=2 ctermbg=0
 " highlight GitGutterChange ctermfg=3 ctermbg=0
@@ -97,6 +107,41 @@ endfunction
 map <F5> :call Togglebackground()<cr>
 " }}}
 
+" Easy-motion {{{
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
+let g:EasyMotion_smartcase = 1
+
+nmap s <Plug>(easymotion-overwin-f)
+" Avoid repetitive use of the h j k l keys.
+map <leader><leader>l <Plug>(easymotion-lineforward)
+map <leader><leader>j <Plug>(easymotion-j)
+map <leader><leader>k <Plug>(easymotion-k)
+map <leader><leader>h <Plug>(easymotion-linebackward)
+" replace default forward slash searching
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+" }}}
+
+" Nvim-R Options {{{
+let R_openpdf = 1
+" }}}
+
+" Vim-gutentags Options {{{
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_project_root = ["Vagrantfile","Makefile"]
+let g:gutentags_cache_dir = "~/.ctags/project-tags"
+" }}}
+
+" Vim-commentary Options {{{
+" To add an unsupported filetype: autocmd FileType apache setlocal commentstring=#\ %s
+" }}}
+
+" Vim-surround Options {{{
+
+" }}}
+
 " Omnisharp Options {{{
 let g:OmniSharp_server_stdio = 1
 " }}}
@@ -104,10 +149,15 @@ let g:OmniSharp_server_stdio = 1
 " Vimwiki Options {{{
 set nocompatible
 filetype plugin on
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 
 " FZF Options {{{
-    
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-h': 'split',
+  \ 'ctrl-v': 'vsplit'
+\ }
 " }}}
 
 " Wal Options {{{
@@ -120,35 +170,11 @@ let g:livepreview_previewer = "zathura"
 " let g:livepreview_cursorhold_recompile = 0
 " }}}
 
-" Nvim-R Options {{{
-let R_openpdf = 1
-" }}}
-
 " Easy-align Options {{{
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-" }}}
-
-" Easy-motion {{{
-nmap s <Plug>(easymotion-overwin-f)
-" Avoid repetitive use of the h j k l keys.
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-" replace default forward slash searching
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-
-let g:EasyMotion_smartcase = 1
-
-
 " }}}
 " }}}

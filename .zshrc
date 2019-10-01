@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 #ZSH_THEME="bira"
 #ZSH_THEME="gnzh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_IGNORE_TERM_COLORS=true
@@ -75,9 +75,10 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker encode64 extract python vagrant vscode wd)
+plugins=(git docker encode64 extract python vagrant vscode wd tmux)
 
 source $ZSH/oh-my-zsh.sh
+# unsetopt AUTO_NAME_DIRS
 # }}}
 
 # User configuration {{{
@@ -103,6 +104,8 @@ export TERMINAL="urxvt"
 export BROWSER="brave"
 # export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
+export TERM="xterm-256color"
+
 # }}}
 
 

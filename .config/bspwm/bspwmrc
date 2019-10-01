@@ -18,7 +18,8 @@ dunst &
 xss-lock -- "$HOME/.config/i3/scripts/lock.sh" &
 # }}}
 
-bspc monitor -d I II III IV V VI
+bspc monitor eDP1 -d I II III IV V VI
+# bspc monitor HDMI1 -d VII VIII IX X
 
 xsetroot -cursor_name left_ptr
 

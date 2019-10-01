@@ -53,15 +53,30 @@ highlight CursorLineNr ctermbg=None
 " }}}
 
 " Mappings {{{
-" Make handling vertical/linear Vim windows easier
-"map <leader>w- <C-W>- " decrement height
-"map <leader>w+ <C-W>+ " increment height
-"map <leader>w] <C-W>_ " maximize height
-"map <leader>w[ <C-W>= " equalize all windows
+" Make window handeling easier {{{
+" map <leader>w- <C-W>- " decrement height
+" map <leader>w+ <C-W>+ " increment height
+" map <leader>w] <C-W>_ " maximize height
+" map <leader>w[ <C-W>= " equalize all windows
+" }}}
 
-" Make splitting Vim windows easier
-" map <leader>; <C-W>s
+" Make tab handeling easier {{{
+noremap <leader>& 1gt
+noremap <leader>é 2gt
+noremap <leader>" 3gt
+noremap <leader>' 4gt
+noremap <leader>( 5gt
+noremap <leader>§ 6gt
+noremap <leader>è 7gt
+noremap <leader>! 8gt
+noremap <leader>ç 9gt
+noremap <leader>à :tablast<cr>
+" }}}
+
+" Make window splitting easier {{{
+" map <leader>; <C-W>h
 " map <leader>` <C-W>v
+" }}}
 
 " autocmd Filetype markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 " autocmd FileType sh,ruby,yaml,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
@@ -71,26 +86,29 @@ highlight CursorLineNr ctermbg=None
 " autocmd Bufread,BufNewFile *.md set filetype=markdown 
 
 " Remove highlighting after search
-"map <leader>h :noih<cr>
+" map <leader>h :noih<cr>
 
 " Reset spelling colours when reading a new buffer
 " This works around an issue where the colorscheme is changed by .local.vimrc
-"fun! SetSpellingColors()
- " highlight SpellBad cterm=bold ctermfg=white ctermbg=red
-  "highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-"endfun
-"autocmd BufWinEnter * call SetSpellingColors()
-"autocmd BufNewFile * call SetSpellingColors()
-"autocmd BufRead * call SetSpellingColors()
-"autocmd InsertEnter * call SetSpellingColors()
-"autocmd InsertLeave * call SetSpellingColors()
+" fun! SetSpellingColors()
+" highlight SpellBad cterm=bold ctermfg=white ctermbg=red
+" highlight SpellCap cterm=bold ctermfg=red ctermbg=white
+" endfun
+" autocmd BufWinEnter * call SetSpellingColors()
+" autocmd BufNewFile * call SetSpellingColors()
+" autocmd BufRead * call SetSpellingColors()
+" autocmd InsertEnter * call SetSpellingColors()
+" autocmd InsertLeave * call SetSpellingColors()
 
 " Close all folds when opening a new buffer
-"autocmd BufRead * setlocal foldmethod=marker
-"autocmd BufRead * normal zM
+" autocmd BufRead * setlocal foldmethod=marker
+" autocmd BufRead * normal zM
+
+
+
 " }}}
 
 " FileType recognition {{{
 " let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
-"}}}
+" }}}

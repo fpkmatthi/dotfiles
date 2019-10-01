@@ -34,13 +34,13 @@ foreground-alt = ${xrdb:color7}
 ; Bar settings {{{
 [bar/main]
 ; Bar layout {{{
-monitor = ${env:MONITOR:eDP-1}
+monitor = ${env:MONITOR:eDP1}
 width = 96%
 height = 23
 offset-x = 2%
 offset-y = 1%
 bottom=false
-fixed-center = true
+fixed-center = false
 background = ${colors.xcolor0}
 foreground = ${colors.xcolor1}
 
@@ -66,10 +66,11 @@ module-margin-right = 0
 
 ; Fonts {{{
 ;font-0 = Inconsolata:size=12:style=Bold
-font-0 = "DejaVuSansMono Nerd Font:pixelsize=11;2"
-font-1 = "Hack Nerd Font:pixelsize=15;3"
-font-2 = "Hack Nerd Font:pixelsize=16;4"
-font-3 = "Hack Nerd Font:pixelsize=18;7"
+font-0 = "Weather Icons:pixelsize=11;1"
+font-1 = "DejaVuSansMono Nerd Font:pixelsize=11;2"
+font-2 = "Hack Nerd Font:pixelsize=15;3"
+font-3 = "Hack Nerd Font:pixelsize=16;4"
+font-4 = "Hack Nerd Font:pixelsize=18;7"
 ; }}}
 
 ; Tray {{{
@@ -88,8 +89,8 @@ scroll-down = bspwm-deskprev
 
 ; Module layout {{{
 modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 xwindow
-modules-center = MiddleArrowLeft date MiddleArrowRight 
-modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-center = ;MiddleArrowLeft date ;MiddleArrowRight 
+modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -159,69 +160,69 @@ label-empty-font = 1
 ; Powerline separators {{{
 [module/LeftStripe1]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 
 [module/LeftStripe2]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor0}
 content-background = ${colors.xcolor1}
 
 [module/LeftArrow1]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor7}
 
 [module/LeftArrow2]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor0}
 
 [module/LeftArrow3]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor1}
 
 [module/RightStripe]
 type = custom/text
-content = "%{T2}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.xcolor0}
 content-background = ${colors.xcolor1}
 
 [module/RightArrow1]
 type = custom/text
-content = "%{T2}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 
 [module/RightArrow2]
 type = custom/text
-content = "%{T2}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor0}
 
 [module/RightArrow3]
 type = custom/text
-content = "%{T2}%{T-}"
+content = "%{T3}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor7}
 
 [module/MiddleArrowLeft]
 ;
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T5}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 
 [module/MiddleArrowRight]
 ;
 type = custom/text
-content = "%{T4}%{T-}"
+content = "%{T5}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 ; }}}
@@ -230,6 +231,7 @@ content-background = ${colors.xcolor0}
 [module/xwindow]
 type = internal/xwindow
 
+label-font = 2
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor0}
 
@@ -243,6 +245,7 @@ format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 format-online-foreground = ${colors.xcolor1}
 format-online-background = ${colors.xcolor7}
 
+label-font = 2
 label-song-maxlen = 25
 label-song-ellipsis = true
 
@@ -261,6 +264,7 @@ toggle-off-foreground = #66
 type = internal/cpu
 interval = 2
 format-prefix = ""
+label-font = 2
 label = %percentage:2%%
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
@@ -271,6 +275,7 @@ format-background = ${colors.xcolor7}
 type = internal/memory
 interval = 2
 format-prefix = " "
+label-font = 2
 label = %percentage_used%%
 format-foreground = ${colors.xcolor7}
 format-background = ${colors.xcolor1}
@@ -283,6 +288,7 @@ exec = $HOME/.config/polybar/scripts/network-networkmanager.sh
 click-left = $HOME/.config/rofi/bin/networkmenu
 tail = true
 
+label-font = 2
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
 ; }}}
@@ -293,6 +299,7 @@ type = custom/script
 exec = $HOME/.config/polybar/scripts/filesystem.sh
 internal = 60
 
+label-font = 2
 format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
 ; }}}
@@ -302,7 +309,7 @@ format-background = ${colors.xcolor7}
 type = internal/date
 interval = 20
 
-; date = ""
+date = ""
 time = %H:%M
 
 date-alt = %d-%m-%Y
@@ -310,10 +317,10 @@ time-alt = %H:%M
 
 label = %date% %time%
 
-; format = " <label>"
+label-font = 2
 format = "<label> "
-format-foreground = ${colors.xcolor0}
-format-background = ${colors.xcolor1}
+format-foreground = ${colors.xcolor7}
+format-background = ${colors.xcolor0}
 
 ; }}}
 
@@ -321,6 +328,7 @@ format-background = ${colors.xcolor1}
 [module/alsa]
 type = internal/alsa
 
+label-font = 2
 format-volume = "<label-volume> <bar-volume> "
 label-volume = 墳 
 label-volume-foreground = ${colors.xcolor7}
@@ -356,6 +364,7 @@ full-at = 98
 
 time-format = %H:%M
 
+label-font = 2
 format-charging = <animation-charging> <label-charging>
 format-charging-foreground = ${colors.xcolor7}
 format-charging-background = ${colors.xcolor1}
@@ -402,6 +411,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
+label-font = 2
 format = <ramp> <label>
 ;format-underline = ${xrdb:color1:#f50a4d}
 format-warn = <ramp> <label-warn>
@@ -423,6 +433,7 @@ type = custom/text
 ; content = "⏼ "
 content = " ⏻ "
 ; click-left = $HOME/.config/polybar/scripts/powermenu.sh
+label-font = 2
 click-left = $HOME/.config/rofi/bin/powermenu
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor7}
@@ -434,6 +445,7 @@ type = custom/script
 exec = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --status
 click-left = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh --switch
 interval = 1
+label-font = 2
 format-foreground = ${colors.xcolor7}
 format-background = ${colors.xcolor1}
 ; }}}
@@ -444,6 +456,7 @@ type = custom/script
 exec = $HOME/.config/polybar/scripts/updates-arch-combined.sh -u
 click-left = $HOME/.config/polybar/scripts/updates-arch-combined.sh -o
 interval = 600
+label-font = 2
 format-foreground = ${colors.xcolor7}
 format-background = ${colors.xcolor1}
 ; }}}
@@ -466,11 +479,24 @@ format-foreground = ${colors.xcolor1}
 format-background = ${colors.xcolor7}
 ; }}}
 
+; Openweather {{{
+[module/openweather]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/openweather.sh
+interval = 600
+
+label-font = 1
+format = <label>
+format-foreground = ${colors.xcolor1}
+format-background = ${colors.xcolor7}
+; }}}
+
 ; System usb dev {{{
 [module/system-usb-udev]
 type = custom/script
 exec = $HOME/.config/polybar/scripts/system-usb-udev.sh
 tail = true
+label-font = 2
 click-left = $HOME/.config/polybar/scripts/system-usb-udev.sh --mount
 click-right = $HOME/.config/polybar/scripts/system-usb-udev.sh --unmount
 ; }}}

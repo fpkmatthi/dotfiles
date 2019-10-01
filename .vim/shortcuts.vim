@@ -15,6 +15,7 @@ autocmd FileType tex inoremap ;sq `'<++><Esc>F`a
 autocmd FileType tex inoremap ;dq ``"<++><Esc>F`a
 autocmd FileType tex inoremap ;tc \textcite{}<++><Esc>F{a
 autocmd FileType tex inoremap ;pc \parencite{}<++><Esc>F{a
+autocmd FileType tex inoremap ;v \verb\|\|<++><Esc>ba
 
 " Rmarkdown
 autocmd FileType rmd inoremap ;r ```{r}<Enter><++><Enter>```<Esc>2kfra

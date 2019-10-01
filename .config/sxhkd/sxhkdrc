@@ -1,8 +1,6 @@
-# TODO: implement azerty
 # {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
 # wm independent hotkeys {{{
-
-# Programs{{{
+# Programs {{{
 # alt + {Return, m, w, c, v, b, n}
     # {$TERMINAL, $TERMINAL -e ncmpcpp, $TERMINAL -e vim -c VimwikiIndex, $TERMINAL -e calcurse, $TERMINAL -e vifm, $BROWSER, $TERMINAL -e neomutt}
 
@@ -12,28 +10,29 @@ alt + Return
 alt + m
     $TERMINAL -e ncmpcpp
 
-# TODO: check for no duplicate of alt+w
 alt + w
-# alt + shift + w
     $TERMINAL -e vim -c VimwikiIndex
 
 alt + c
     $TERMINAL -e calcurse
 
-alt + v
-    $TERMINAL -e vifm
+alt + r
+    $TERMINAL -e ranger
 
 alt + b
-# alt + w
     $BROWSER
 
 alt + n
     $TERMINAL -e neomutt
 # }}}
 
-# Actions{{{
+# Actions {{{
 alt + d
     $HOME/.config/rofi/bin/appmenu
+
+alt + x
+    $HOME/.config/rofi/bin/powermenu
+    # $HOME/.config/polybar/scripts/powermenu.sh
 
 alt + shift + m
     $HOME/.config/rofi/bin/mpdmenu
@@ -45,10 +44,6 @@ alt + shift + {s,u}
 alt + shift + x
     $HOME/.config/i3/scripts/lock.sh
 
-alt + x
-    $HOME/.config/rofi/bin/powermenu
-    # $HOME/.config/polybar/scripts/powermenu.sh
-
 # screenshot
 alt + shift + p
     $HOME/.config/rofi/bin/scrotmenu
@@ -57,30 +52,21 @@ alt + shift + p
 alt + shift + n
     $HOME/.config/rofi/bin/networkmenu
 
-
 # make sxhkd reload its configuration files:
 alt + Escape
     pkill -USR1 -x sxhkd
 
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    $HOME/.config/dunst/scripts/volume-notification.sh {up,down,mute}
+    # amixer {-D pulse sset Master 5%+ unmute,-D pulse sset Master 5%- unmute, -D pulse set Master1+ toggle}
 
-XF86AudioRaiseVolume 
-    amixer -D pulse sset Master 5%+ unmute
-XF86AudioLowerVolume 
-    amixer -D pulse sset Master 5%- unmute
-XF86AudioMute 
-    amixer -q sset Master,0 toggle
-
-
-XF86MonBrightnessUp 
-    light -A 10 
-XF86MonBrightnessDown 
-    light -U 10 
+XF86MonBrightness{Up,Down}
+    $HOME/.config/dunst/scripts/brightness-notification.sh {up,down}
+    xbacklight {-inc 5,-dec 5}
 # }}}
-
 # }}}
 
 # bspwm hotkeys {{{
-
 # quit/restart bspwm
 alt + shift + {e,r}
     bspc {quit,wm -r}
@@ -89,22 +75,19 @@ alt + shift + {e,r}
 alt + shift + q
     bspc node -k
 
+alt + F4
+    bspc node -c
+
 # # alternate between the tiled and monocle layout
 # alt + m
 #     bspc desktop -l next
 
 # # send the newest marked node to the newest preselected node
-# alt + y
-#     bspc node newest.marked.local -n newest.!automatic.local
-
-# # swap the current node and the biggest node
 # alt + g
 #     bspc node -s biggest
-
 # }}}
 
 # state/flags {{{
-
 # set the window state
 alt + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
@@ -113,6 +96,9 @@ alt + {t,shift + t,s,f}
 alt + ctrl + {m,x,y,z}
     bspc node -g {marked,locked,sticky,private}
 
+## Toggle between floating & tiled
+super + space
+    bspc node -t "~"{floating,tiled}
 # }}}
 
 # focus/swap {{{
@@ -132,12 +118,9 @@ alt + Tab
 # focus or send to the given desktop
 alt + {_,shift + }{ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc {desktop -f,node -d} '^{1-9,10}'
-# alt + {_,shift + }{1-9,0}
-    # bspc {desktop -f,node -d} '^{1-9,10}'
 # }}}
 
 # preselect {{{
-
 # preselect the direction
 super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
@@ -155,19 +138,22 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# Split horizontal, split vertical, or cancel
+alt + {v,shift+v,shift+Escape}
+    bspc node -p {south,east,cancel}
 # }}}
 
 # move/resize {{{
-
-# expand a window by moving one of its side outward
-super + {h,j,k,l}
+# expand window
+super + shift + ctrl + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
+# contract window
 super + shift {h,j,k,l}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-super + shift + ctrl + {h,j,k,l}
+super + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 # }}}
