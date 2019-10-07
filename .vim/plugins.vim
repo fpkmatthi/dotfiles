@@ -5,14 +5,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'dylanaraps/wal.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'

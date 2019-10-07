@@ -56,8 +56,8 @@ highlight CursorLineNr ctermbg=None
 " Make window handeling easier {{{
 " map <leader>w- <C-W>- " decrement height
 " map <leader>w+ <C-W>+ " increment height
-" map <leader>w] <C-W>_ " maximize height
-" map <leader>w[ <C-W>= " equalize all windows
+" map <leader>wm <C-W>_ " maximize height
+" map <leader>w= <C-W>= " equalize all windows
 " }}}
 
 " Make tab handeling easier {{{
@@ -70,7 +70,11 @@ noremap <leader>§ 6gt
 noremap <leader>è 7gt
 noremap <leader>! 8gt
 noremap <leader>ç 9gt
-noremap <leader>à :tablast<cr>
+" noremap <leader>à :tablast<cr>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>th :tabnext<CR>
+nnoremap <leader>tl :tabprev<CR>
+nnoremap <leader>tq :tabclose<CR>
 " }}}
 
 " Make window splitting easier {{{
@@ -79,7 +83,8 @@ noremap <leader>à :tablast<cr>
 " }}}
 
 " autocmd Filetype markdown setlocal wrap linebreak nolist textwidth=0 wrapmargin=0 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-" autocmd FileType sh,ruby,yaml,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType sh,ruby,yaml,zsh,vim setlocal shiftwidth=2 tabstop=2 expandtab
 
 
 " specify syntax highlighting for specific files
