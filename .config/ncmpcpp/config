@@ -270,7 +270,7 @@ visualizer_look = ●▮
 ## Note: Custom command that will be executed each time song changes. Useful for
 ## notifications etc.
 ##
-#execute_on_song_change = ""
+execute_on_song_change = dunstify "Now Playing" "$(mpc current)" -i /usr/share/icons/Papirus-Dark/32x32/apps/gnome-music.svg --replace=666 -t 2000
 #
 ##
 ## Note: Custom command that will be executed each time player state
@@ -278,7 +278,7 @@ visualizer_look = ●▮
 ## state (either unknown, play, pause, or stop) for its duration.
 ##
 #
-#execute_on_player_state_change = ""
+# execute_on_player_state_change = dunstify "Now Playing" "$(mpc current)" -i /usr/share/icons/Papirus-Dark/32x32/apps/gnome-music.svg --replace=666 -t 2000
 #
 #playlist_show_mpd_host = no
 #

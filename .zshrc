@@ -101,11 +101,11 @@ fi
 
 # Shell variables {{{
 export TERMINAL="urxvt"
-export BROWSER="brave"
-# export BROWSER="chromium"
+# export BROWSER="brave"
+export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
-
+export GPG_TTY=$(tty)
 # }}}
 
 
