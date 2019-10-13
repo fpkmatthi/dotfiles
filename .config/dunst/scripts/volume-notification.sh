@@ -1,11 +1,11 @@
 #!/bin/dash
 
 get_volume() {
-    amixer -D pulse get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
+    amixer get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
 }
 
 is_mute() {
-    amixer -D pulse get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
+    amixer get Master | grep '%' | grep -oE '[^ ]+$' | grep off > /dev/null
 }
 
 send_notification() {
@@ -28,7 +28,7 @@ send_notification() {
                     icon_name="/usr/share/icons/Papirus-Dark/16x16/panel/audio-volume-high.svg"
                 fi
             fi
-            bar=$(seq -s "─" $((${volume}/8)) | sed 's/[0-9]//g')
+            bar=$(seq -s "─" $((${volume}/7)) | sed 's/[0-9]//g')
             dunstify "${volume}""     ""$bar" -i "$icon_name" -t 2000 -h int:value:"${volume}" -h string:synchronous:"$bar" --replace=555
         fi
     fi
@@ -38,17 +38,17 @@ send_notification() {
 case $1 in
     up)
         # Set the volume on (if it was muted)
-        amixer -D pulse set Master on > /dev/null
-        amixer -D pulse sset Master 10%+ > /dev/null
+        amixer set Master on > /dev/null
+        amixer sset Master 7%+ > /dev/null
         send_notification
         ;;
     down)
-        amixer -D pulse set Master on > /dev/null
-        amixer -D pulse sset Master 10%- > /dev/null
+        amixer set Master on > /dev/null
+        amixer sset Master 7%- > /dev/null
         send_notification
         ;;
     mute)
-        amixer -D pulse set Master 1+ toggle > /dev/null
+        amixer set Master 1+ toggle > /dev/null
         if is_mute ; then
             dunstify -i "/usr/share/icons/Papirus-Dark/16x16/panel/audio-volume-muted.svg" --replace=555 -u normal "Mute" -t 2000
         else

@@ -4,18 +4,16 @@
 setxkbmap be
 sxhkd &
 xrdb $HOME/.Xresources
-wal -i "/home/fpkmatthi/Pictures/Wal/deathstar-landscape.png" -a 70
+wal -i $HOME/.config/deathstar-landscape.png -a 70
 $HOME/.config/polybar/launch.sh
 $HOME/.config/compton/launch.sh
 $HOME/.config/redshift/launch.sh
-# $HOME/.config/dunst/launch.sh
 dunst &
 # }}}
 
 # Things to start late {{{
-### Polybar needs to start late for te top padding to work correctly
 ### otherwise it overlaps
-xss-lock -- "$HOME/.config/i3/scripts/lock.sh" &
+xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
 # }}}
 
 bspc monitor eDP1 -d I II III IV V VI

@@ -40,7 +40,7 @@ height = 23
 offset-x = 2%
 offset-y = 1%
 bottom=false
-fixed-center = false
+fixed-center = true
 background = ${colors.xcolor0}
 foreground = ${colors.xcolor1}
 
@@ -90,7 +90,7 @@ scroll-down = bspwm-deskprev
 ; Module layout {{{
 modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 xwindow
 modules-center = ;MiddleArrowLeft date ;MiddleArrowRight 
-modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 ;openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -329,7 +329,8 @@ format-background = ${colors.xcolor0}
 type = internal/alsa
 
 label-font = 2
-format-volume = "<label-volume> <bar-volume> "
+; format-volume = "<label-volume> <bar-volume> "
+format-volume = "<label-volume> "
 label-volume = 墳 
 label-volume-foreground = ${colors.xcolor7}
 
