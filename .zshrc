@@ -75,7 +75,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker encode64 extract python vagrant vscode wd tmux)
+plugins=(git docker encode64 extract python vagrant vscode wd tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 # unsetopt AUTO_NAME_DIRS
@@ -105,9 +105,13 @@ export BROWSER="brave"
 # export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
-
+export GPG_TTY=$(tty)
 # }}}
 
+# Export path {{{
+# export PATH="/opt/anaconda/bin:$PATH"
+# export PATH="/usr/share/terminfo:$PATH"
+# }}}
 
 # Alias' {{{
 # Set personal aliases, overriding those provided by oh-my-zsh libs,

@@ -127,8 +127,10 @@ let R_openpdf = 1
 
 " Vim-gutentags Options {{{
 set statusline+=%{gutentags#statusline()}
-let g:gutentags_project_root = ["Vagrantfile","Makefile"]
+let g:gutentags_project_root = [".git","Vagrantfile","Makefile"]
+let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_cache_dir = "~/.ctags/project-tags"
+" let g:gutentags_enabled = 1
 " }}}
 
 " Vim-commentary Options {{{
@@ -146,6 +148,7 @@ let g:OmniSharp_server_stdio = 1
 " Vimwiki Options {{{
 set nocompatible
 filetype plugin on
+nmap <leader><leader>vwnl <Plug>VimwikiNextLink
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 
