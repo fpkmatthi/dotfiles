@@ -11,7 +11,7 @@ super + m
     $TERMINAL -e ncmpcpp
 
 super + w
-    $TERMINAL -e vim -c VimwikiIndex
+    $TERMINAL -e nvim -c VimwikiIndex
 
 super + c
     $TERMINAL -e calcurse

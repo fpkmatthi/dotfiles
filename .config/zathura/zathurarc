@@ -1,5 +1,10 @@
 set selection-clipboard clipboard
+
 set adjust-open "best-fit"
+
+set window-title-basename true
+set statusbar-basename true
 set incremental-search true
+
 map <C-i> zoom in
 map <C-o> zoom out
