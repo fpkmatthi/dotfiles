@@ -1,15 +1,11 @@
-#!/bin/dash
+#!/bin/sh
 
 network_print() {
-    CONNECTION_LIST=$(nmcli -t -f name,type,device,state connection show --active 2>/dev/null | grep -v ':bridge:')
-    CONNECTION_COUNT=$(echo "$CONNECTION_LIST" | wc -l)
-
+    connection_list=$(nmcli -t -f name,type,device,state connection show --order name --active 2>/dev/null | grep -v ':bridge:')
     counter=0
 
-    if [ "$CONNECTION_COUNT" -ne 0 ]; then
-        echo "$CONNECTION_LIST" | while read -r line; do
-            counter=$((counter + 1))
-
+    if [ -n "$connection_list" ] && [ "$(echo "$connection_list" | wc -l)" -gt 0  ]; then
+        echo "$connection_list" | while read -r line; do
             description=$(echo "$line" | cut -d ':' -f 1)
             type=$(echo "$line" | cut -d ':' -f 2)
             device=$(echo "$line" | cut -d ':' -f 3)
@@ -37,18 +33,20 @@ network_print() {
                         speed="?"
                     fi
 
-                    description="$description - $speed"
-                fi
-
-                printf '%s %s' "$icon" "$description"
-
-                if [ "$CONNECTION_COUNT" -ne $counter ]; then
-                    printf "    "
-                else
-                    printf "\n"
+                    description="$description ($speed)"
                 fi
             fi
+
+            if [ $counter -gt 0 ]; then
+                printf "  %s %s" "$icon" "$description"
+            else
+                printf "%s %s" "$icon" "$description"
+            fi
+
+            counter=$((counter + 1))
         done
+
+        printf "\n"
     else
         echo ""
     fi
@@ -62,7 +60,7 @@ network_update() {
     fi
 }
 
-path_pid="$HOME/.config/polybar/scripts/network-networkmanager.pid"
+path_pid="/tmp/polybar-network-networkmanager.pid"
 
 case "$1" in
     --update)

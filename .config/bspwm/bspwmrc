@@ -14,9 +14,11 @@ dunst &
 # Things to start late {{{
 ### otherwise it overlaps
 xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
+optimus-manager-qt &
 # }}}
 
-bspc monitor eDP1 -d I II III IV V VI
+bspc monitor $MONITOR -d I II III IV V VI VII
+# bspc monitor eDP-1-1 -d I II III IV V VI
 # bspc monitor HDMI1 -d VII VIII IX X
 
 xsetroot -cursor_name left_ptr

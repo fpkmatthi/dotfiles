@@ -34,7 +34,7 @@ foreground-alt = ${xrdb:color7}
 ; Bar settings {{{
 [bar/main]
 ; Bar layout {{{
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:eDP-1-1}
 width = 96%
 height = 23
 offset-x = 2%
@@ -88,9 +88,9 @@ scroll-down = bspwm-deskprev
 ; }}}
 
 ; Module layout {{{
-modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 xwindow
+modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 ;xwindow
 modules-center = ;MiddleArrowLeft date ;MiddleArrowRight 
-modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 ;openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 ;info-tmux-sessions ;openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -579,6 +579,20 @@ interval = 5
 click-left = "optirun -b none nvidia-settings -c :8"
 ; }}}
 
+; Info-tmux-sessions {{{
+[module/info-tmux-sessions]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/info-tmux-sessions.sh -n
+interval = 5
+
+click-left = $HOME/.config/polybar/scripts/info-tmux-sessions.sh -s
+; click-right = $HOME/.config/polybar/scripts/info-tmux-sessions.sh -n
+click-right = echo ""
+
+format = <label>
+format-foreground = ${colors.xcolor1}
+format-background = ${colors.xcolor7}
+; }}}
 
 ; Signal {{{
 [module/signal]

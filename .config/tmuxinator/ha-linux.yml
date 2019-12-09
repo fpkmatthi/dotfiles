@@ -46,21 +46,12 @@ windows:
         - main:
           - clear
           - vagrant status
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
   - ssh:
       root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/
-      layout: 9556,102x54,0,0{50x54,0,0,22,51x54,51,0[51x26,51,0,24,51x27,51,27,26]}
-      panes:
-        - ssh 192.168.100.10
-        - ssh 192.168.100.20
-        - ssh 192.168.100.30
-  - vagrantfile_hosts_groups:
+  - hosts_and_groups:
       root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/
-      layout: 9556,102x54,0,0{50x54,0,0,22,51x54,51,0[51x26,51,0,24,51x27,51,27,26]}
+      layout: even-horizontal
       panes:
-        - vim Vagrantfile
         - vim vagrant-hosts.yml
         - vim vagrant-groups.yml
   - playground:
@@ -68,25 +59,7 @@ windows:
       panes:
         - main:
           - clear
-  - webserv00x:
-      root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/ansible
-      layout: even-horizontal
-      panes:
-        - vim web.yml
-        - vim group_vars/web/vars.yml
-  - lbserv00x:
-      root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/ansible
-      layout: even-horizontal
-      panes:
-        - vim lb.yml
-        - vim group_vars/lb/vars.yml
-  - dbserv00x:
-      root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/ansible
-      layout: even-horizontal
-      panes:
-        - vim db.yml
-        - vim group_vars/db/vars.yml
   - reports:
       root: ~/Repositories/Hogent/elnx-1920-ha-fpkmatthi/report/
       panes:
-        - vim 02-report.md
+        - vim 07-report.md
