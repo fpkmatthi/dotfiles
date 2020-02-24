@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Things to start early {{{
+# Launch general apps (NOTE: order matters) {{{
 setxkbmap be
 sxhkd &
 xrdb $HOME/.Xresources
@@ -11,21 +11,34 @@ $HOME/.config/redshift/launch.sh
 dunst &
 # }}}
 
-# Things to start late {{{
-### otherwise it overlaps
+# Launch trivial apps in the background {{{
 xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
 optimus-manager-qt &
+nm-applet &
 # }}}
 
-bspc monitor $MONITOR -d I II III IV V VI VII
-# bspc monitor eDP-1-1 -d I II III IV V VI
-# bspc monitor HDMI1 -d VII VIII IX X
+# Main bspwm config {{{
+## if 1 monitor, alles op 1 monitor
+## else, if 2 monitors, split evenly
+monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
+if [ "${monitors}" -eq 1 ]; then
+  bspc monitor $MONITOR -d I II III IV V VI
+elif [ "${monitors}" -eq 2 ]; then
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  bspc monitor $MONITOR -d I II III IV V
+  bspc monitor "${second_monitor}" -d VI VII VIII IX X
+elif [ "${monitors}" -eq 3 ]; then
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  third_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  bspc monitor $MONITOR -d I II III IV V VI
+  bspc monitor "${second_monitor}" -d V VI VII
+  bspc monitor "${third_monitor}" -d VIII IX X
+fi
 
 xsetroot -cursor_name left_ptr
 
 bspc config border_width         2
-bspc config window_gap          12
-
+bspc config window_gap           12
 bspc config split_ratio          0.50
 bspc config top_padding          45
 bspc config bottom_padding       10
@@ -38,17 +51,31 @@ bspc config single_monocle       true
 bspc config focus_by_distance    true
 bspc config history_aware_focus  true
 bspc config ignore_ewmh_focus    false
+# }}}
 
-bspc rule -a Chromium desktop='^2' follow=on
-bspc rule -a brave-browser desktop='^2' follow=on
-bspc rule -a discord desktop='^4' follow=on #state=fullscreen
-bspc rule -a Vlc desktop='^5' follow=on
-bspc rule -a Gimp desktop='^6' state=floating follow=on
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
+# Application rules {{{
+# Terminal {{{
 
-# Border {{{
+# }}}
+# Web Browsers {{{
+bspc rule -a Firefox desktop='^2' follow=on focus=on
+bspc rule -a Chromium desktop='^2' follow=on focus=on
+# }}}
+# Git Kraken {{{
+bspc rule -a gitkraken desktop='^3' follow=on focus=on
+# }}}
+# Social {{{
+bspc rule -a discord desktop='^4' follow=on focus=on
+# }}}
+# Media {{{
+bspc rule -a Vlc desktop='^5' follow=on focus=on
+# }}}
+# Other {{{
+bspc rule -a "Gimp-2.10" desktop='^6' follow=on focus=on
+# }}}
+# }}}
+
+# Border color {{{
 source "$HOME/.cache/wal/colors.sh"
 bspc config normal_border_color $color0
 bspc config focused_border_color $color1

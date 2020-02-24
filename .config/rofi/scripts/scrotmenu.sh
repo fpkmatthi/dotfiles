@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 rofi_command="rofi -theme themes/scrotmenu.rasi"
 
@@ -8,7 +8,7 @@ area=""
 window=""
 # }}}
 
-chosen="$(echo "$screen\n$area\n$window" | $rofi_command -dmenu -selected-row 1)"
+chosen="$(echo -e "$screen\n$area\n$window" | $rofi_command -dmenu -selected-row 1)"
 
 case $chosen in
     $screen)

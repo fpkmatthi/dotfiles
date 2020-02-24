@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 rofi_command="rofi -theme themes/i3layoutmenu.rasi"
 
@@ -8,7 +8,7 @@ tabbed="ﬓ"
 split="﬿"
 # }}}
 
-chosen="$(echo "$stacked\n$tabbed\n$split" | $rofi_command -dmenu -selected-row 1)"
+chosen="$(echo -e "$stacked\n$tabbed\n$split" | $rofi_command -dmenu -selected-row 1)"
 
 # TODO: switch to bspwm
 case $chosen in

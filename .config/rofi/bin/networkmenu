@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 python $HOME/.config/rofi/scripts/networkmenu.py
 

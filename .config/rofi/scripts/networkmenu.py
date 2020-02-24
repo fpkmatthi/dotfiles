@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # encoding:utf8
 """NetworkManager command line dmenu script.
 

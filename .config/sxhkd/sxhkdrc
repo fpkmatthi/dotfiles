@@ -1,9 +1,7 @@
+# NOTE: Number keys on AZERTY keyboard are marked as
 # {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
-# wm independent hotkeys {{{
-# Programs {{{
-# alt + {Return, m, w, c, v, b, n}
-    # {$TERMINAL, $TERMINAL -e ncmpcpp, $TERMINAL -e vim -c VimwikiIndex, $TERMINAL -e calcurse, $TERMINAL -e vifm, $BROWSER, $TERMINAL -e neomutt}
 
+# Programs {{{
 super + Return
     $TERMINAL
 
@@ -26,20 +24,15 @@ super + n
     $TERMINAL -e neomutt
 # }}}
 
-# Actions {{{
+# Menus, volume, brightness {{{
 super + d
     $HOME/.config/rofi/bin/appmenu
 
 super + x
     $HOME/.config/rofi/bin/powermenu
-    # $HOME/.config/polybar/scripts/powermenu.sh
 
 super + shift + m
     $HOME/.config/rofi/bin/mpdmenu
-
-# Toggle shiftlock esc swap on or off 
-super + shift + {s,u}
-    {$HOME/.config/bspwm/scripts/swap-esc-caps.sh on && dunstify "Escape key swapped", $HOME/.config/bspwm/scripts/swap-esc-caps.sh off && dunstify "Escape key reset"}
 
 super + shift + x
     $HOME/.config/bspwm/scripts/lock.sh
@@ -47,65 +40,45 @@ super + shift + x
 # screenshot
 super + shift + p
     $HOME/.config/rofi/bin/scrotmenu
-    # maim $HOME/Pictures/screenshot/pic-full-$(date +'%d-%m-%Y-%H-%M-%S').png && dunstify "Screenshot saved $(date +'%d-%m-%Y-%H-%M-%S').png"
 
 super + shift + n
     $HOME/.config/rofi/bin/networkmenu
 
-# make sxhkd reload its configuration files:
-super + Escape
-    pkill -USR1 -x sxhkd
-
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-    $HOME/.config/dunst/scripts/volume-notification.sh {up,down,mute}
-    # amixer {-D pulse sset Master 5%+ unmute,-D pulse sset Master 5%- unmute, -D pulse set Master1+ toggle}
+    $HOME/.config/sxhkd/scripts/volume-notification.sh {up,down,mute}
 
 XF86MonBrightness{Up,Down}
-    $HOME/.config/dunst/scripts/brightness-notification.sh {up,down}
-    # xbacklight {-inc 5,-dec 5}
-# }}}
+    $HOME/.config/sxhkd/scripts/brightness-notification.sh {up,down}
 # }}}
 
-# bspwm hotkeys {{{
+# Bspwm hotkeys {{{
 # quit/restart bspwm
 super + shift + {e,r}
     bspc {quit,wm -r}
 
-# close and kill
+# force quit
 super + shift + q
     bspc node -k
 
+# close normally
 alt + F4
     bspc node -c
 
-# # alternate between the tiled and monocle layout
-# alt + m
-#     bspc desktop -l next
-
-# # send the newest marked node to the newest preselected node
-# alt + g
-#     bspc node -s biggest
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
 # }}}
 
-# state/flags {{{
+# Node state/flags {{{
 # set the window state
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-## Toggle between floating & tiled
-super + space
-    bspc node -t "~"{floating,tiled}
 # }}}
 
-# focus/swap {{{
-
+# Focus/swap {{{
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
-
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-    bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + Tab
@@ -114,9 +87,13 @@ super + Tab
 # focus or send to the given desktop
 super + {_,shift + }{ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc {desktop -f,node -d} '^{1-9,10}'
+
+# rotate nodes
+super + {v, shift + v}
+    bspc node @/ -R {90,270}
 # }}}
 
-# preselect {{{
+# Preselect {{{
 # preselect the direction
 super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
@@ -124,23 +101,17 @@ super + ctrl + {h,j,k,l}
 # preselect the ratio
 super + ctrl + {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
     bspc node -o 0.{1-9}
-# super + ctrl + {1-9}
-#     bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
     bspc node -p cancel
 
-# # cancel the preselection for the focused desktop
-# super + ctrl + shift + space
-#     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-
-# Split horizontal, split vertical, or cancel
+# split horizontal, split vertical, or cancel
 super + ctrl + {v,shift+v,shift+Escape}
     bspc node -p {south,east,cancel}
 # }}}
 
-# move/resize {{{
+# Move/resize {{{
 # expand window
 super + shift + ctrl + {u,i,o,p}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
@@ -148,8 +119,4 @@ super + shift + ctrl + {u,i,o,p}
 # contract window
 super + {u,i,o,p}
     bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# move a floating window
-# super + {u,i,o,p}
-#     bspc node -v {-20 0,0 20,0 -20,20 0}
 # }}}
