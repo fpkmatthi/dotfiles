@@ -6,10 +6,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ajh17/VimCompletesMe'
 Plug 'easymotion/vim-easymotion'
-" Plug 'elzr/vim-json'
+Plug 'elzr/vim-json'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
-" Plug 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -17,32 +17,30 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'nicholaides/words-to-avoid.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-eunuch'
+" Plug 'tpope/vim-eunuch'
 " Plug 'maximbaz/lightline-ale'
 " Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'mhinz/vim-startify'
-" Plug 'OmniSharp/omnisharp-vim'
-" Plug 'pangloss/vim-javascript'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'pangloss/vim-javascript'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'PotatoesMaster/i3-vim-syntax'
-" Plug 'PProvost/vim-ps1'
+Plug 'PProvost/vim-ps1'
 Plug 'scrooloose/nerdtree'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'vim-scripts/indentpython.vim'
 Plug 'vimwiki/vimwiki'
-" Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 " }}}
@@ -135,7 +133,7 @@ set statusline+=%{gutentags#statusline()}
 let g:gutentags_project_root = [".git","Vagrantfile","Makefile"]
 let g:gutentags_ctags_tagfile = '.tags'
 let g:gutentags_cache_dir = "~/.ctags/project-tags"
-let g:gutentags_enabled = 1
+" let g:gutentags_enabled = 1
 " }}}
 
 " Vim-commentary Options {{{
@@ -153,8 +151,10 @@ let g:OmniSharp_server_stdio = 1
 " Vimwiki Options {{{
 set nocompatible
 filetype plugin on
+syntax on
 " nmap <leader><leader>vwnl <Plug>VimwikiNextLink
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Documents/wiki/src/', 'path_html': '~/Documents/wiki/html/'}]
+let g:vimwiki_list = [{'path': '~/Documents/wiki/src/', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 
 " FZF Options {{{
@@ -163,16 +163,6 @@ let g:fzf_action = {
   \ 'ctrl-h': 'split',
   \ 'ctrl-v': 'vsplit'
 \ }
-" }}}
-
-" Goyo Options {{{
-
-" }}}
-
-" Limelight Options {{{
-" " Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
 " }}}
 
 " Wal Options {{{
@@ -193,28 +183,25 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }}}
 
-" YouCompleteMe Options {{{
-let g:loaded_python_provider=0
-let g:python3_host_prog='/usr/bin/python3'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" https://neovim.io/doc/user/provider.html
-" " python with virtualenv support
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-"   project_base_dir = os.environ['VIRTUAL_ENV']
-"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"   execfile(activate_this, dict(__file__=activate_this))
-" EOF
-" }}}
+" Limelight Options {{{
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 240
 
-" Vimtex Options {{{
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-let g:tex_conceal='abdmg'
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 0
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 " }}}
 
 " Markdown-preview Options {{{
@@ -251,7 +238,7 @@ let g:mkdp_open_ip = ''
 
 " specify browser to open preview page
 " default: ''
-let g:mkdp_browser = 'chromium'
+let g:mkdp_browser = 'firefox'
 
 " set to 1, echo preview page url in command line when open preview page
 " default is 0

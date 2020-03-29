@@ -1,16 +1,68 @@
+# Zathura config
+
 set selection-clipboard clipboard
-
-set adjust-open "best-fit"
-
 set window-title-basename true
 set statusbar-basename true
 set incremental-search true
 
-set default-bg "#24364A"
-
-
-set recolor true
-set recolor-lightcolor "#24364A"
-
+# Keyboard mappings
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
 map <C-i> zoom in
 map <C-o> zoom out
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+# Stop at page boundries
+set scroll-page-aware "true"
+set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+set render-loading "false"
+set scroll-step 50
+
+# Zoom settings
+set zoom-min 10
+set guioptions ""
+
+# Font
+set font "hack 15"
+
+# Set default color to not inverse color
+set recolor "false"
+set recolor-lightcolor "#000000" #00
+set recolor-darkcolor "#E0E0E0" #06
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+# Colors
+set completion-bg "#0C121B"
+set completion-fg "#acb2bd"
+set completion-group-bg "#0C121B"
+set completion-group-fg "#5D687D"
+set completion-highlight-bg "#cc4f3b"
+set completion-highlight-fg "#0C121B"
+set recolor-lightcolor "#0C121B"
+set recolor-darkcolor "#acb2bd"
+set default-bg "#0C121B"
+set inputbar-bg "#0C121B"
+set inputbar-fg "#acb2bd"
+set notification-bg "#cc4f3b"
+set notification-fg "#acb2bd"
+set notification-error-bg "#cc4f3b"
+set notification-error-fg "#acb2bd"
+set notification-warning-bg "#cc4f3b"
+set notification-warning-fg "#acb2bd"
+set statusbar-bg "#0C121B"
+set statusbar-fg "#acb2bd"
+set index-bg "#0C121B"
+set index-fg "#acb2bd"
+set index-active-bg "#acb2bd"
+set index-active-fg "#0C121B"
+set render-loading-bg "#0C121B"
+set render-loading-fg "#acb2bd"

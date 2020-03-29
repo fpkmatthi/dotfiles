@@ -22,9 +22,9 @@ main() {
         elif [ "$action" = "status" ]; then
             # echo "busy or shield ip" 
             if [ $isVpnProcessRunning = 1 ]; then
-                echo "%{F#fcbe42}ﱾ Busy%{F-}"
+                echo "%{F#fcbe42} ﱾ Busy%{F-}"
             else
-                echo "%{F#60f542}ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2)%{F-}"
+                echo "%{F#60f542} ﱾ $(nordvpn status | grep IP | tr -d ' ' | cut -d ':' -f2) %{F-}"
             fi
         fi
     elif [ "$status" = "Disconnected" ]; then
@@ -34,9 +34,9 @@ main() {
         elif [ "$action" = "status" ]; then
             # echo "shield" 
             if [ $isVpnProcessRunning = 1 ]; then
-                echo "%{F#fcbe42}ﱾ Busy%{F-}"
+                echo "%{F#fcbe42} ﱾ Busy %{F-}"
             else
-                echo "%{F#f54242}ﱾ%{F-}"
+                echo "%{F#f54242} ﱾ %{F-}"
             fi
         fi
     fi

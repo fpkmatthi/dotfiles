@@ -30,8 +30,7 @@ foreground-alt = ${xrdb:color7}
 # }}}
 ; }}}
 
-
-; Bar settings {{{
+; Main Bar settings {{{
 [bar/main]
 ; Bar layout {{{
 monitor = ${env:MONITOR:eDP-1-1}
@@ -67,7 +66,7 @@ module-margin-right = 0
 ; Fonts {{{
 ;font-0 = Inconsolata:size=12:style=Bold
 font-0 = "Weather Icons:pixelsize=11;1"
-font-1 = "DejaVuSansMono Nerd Font:pixelsize=11;2"
+font-1 = "Arimo Nerd Font:pixelsize=11;2"
 font-2 = "Hack Nerd Font:pixelsize=15;3"
 font-3 = "Hack Nerd Font:pixelsize=16;4"
 font-4 = "Hack Nerd Font:pixelsize=18;7"
@@ -90,7 +89,7 @@ scroll-down = bspwm-deskprev
 ; Module layout {{{
 modules-left = bspwm RightArrow3 filesystem ;mpd RightArrow2 ;xwindow
 modules-center = ;MiddleArrowLeft date ;MiddleArrowRight 
-modules-right = system-usb-udev alsa LeftStripe1 updates-arch-combined LeftArrow3 ;info-tmux-sessions ;openweather ;weather LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
+modules-right = system-usb-udev LeftStripe1 updates-arch-combined LeftArrow3 alsa LeftArrow1 nordvpn LeftArrow3 network-networkmanager LeftArrow1 memory LeftArrow3 cpu LeftArrow1 battery LeftArrow3 powermenu
 # }}}
 
 ; Cursor layout {{{
@@ -98,6 +97,66 @@ cursor-click = pointer
 ; }}}
 ; }}}
 
+; Secondary Bar settings {{{
+[bar/second]
+; Bar layout {{{
+monitor = HDMI-0
+width = 96%
+height = 23
+offset-x = 2%
+offset-y = 1%
+bottom=false
+fixed-center = true
+background = ${colors.xcolor0}
+foreground = ${colors.xcolor1}
+
+overline-size = 0
+overline-color = ${colors.xcolor7}
+underline-size = 0
+underline-color = ${colors.xcolor7}
+
+border-bottom-size = 0
+border-bottom-color = ${colors.xcolor7}
+border-top-size = 0
+border-top-color = ${colors.xcolor7}
+border-color-foreground = ${colors.peach}
+
+spacing = 0
+radius = 5.0
+padding-left = 0
+padding-right = 0
+;label-padding = 2
+module-margin-left = 0
+module-margin-right = 0
+; }}}
+
+; Fonts {{{
+;font-0 = Inconsolata:size=12:style=Bold
+font-0 = "Weather Icons:pixelsize=11;1"
+font-1 = "Arimo Nerd Font:pixelsize=11;2"
+font-2 = "Hack Nerd Font:pixelsize=15;3"
+font-3 = "Hack Nerd Font:pixelsize=16;4"
+font-4 = "Hack Nerd Font:pixelsize=18;7"
+; }}}
+
+; Tray {{{
+wm-restack = bspwm
+;override-redirect = true
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+; }}}
+
+; Module layout {{{
+modules-left = bspwm RightArrow1
+modules-center = date
+modules-right = LeftArrow2 powermenu
+# }}}
+
+; Cursor layout {{{
+cursor-click = pointer
+; }}}
+
+; }}}
 
 ; Bspwm settings {{{
 ; General {{{
@@ -154,7 +213,6 @@ label-empty-font = 1
 ; label-separator = |
 ; }}}
 ; }}}
-
 
 ; Modules {{{
 ; Powerline separators {{{
@@ -331,11 +389,15 @@ type = internal/alsa
 label-font = 2
 ; format-volume = "<label-volume> <bar-volume> "
 format-volume = "<label-volume> "
-label-volume = 墳 
-label-volume-foreground = ${colors.xcolor7}
+label-volume = " 墳"
+; label-volume-foreground = ${colors.xcolor7}
+format-volume-foreground = ${colors.xcolor0}
+format-volume-background = ${colors.xcolor7}
 
 format-muted-prefix = " 婢"
-format-muted-foreground = ${colors.xcolor7}
+; format-muted-foreground = ${colors.xcolor7}
+format-muted-foreground = ${colors.xcolor0}
+format-muted-background = ${colors.xcolor7}
 label-muted = " " 
 
 bar-volume-width = 10
@@ -432,7 +494,7 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/text
 ; content = "⏼ "
-content = " ⏻ "
+content = " ⏻  "
 ; click-left = $HOME/.config/polybar/scripts/powermenu.sh
 label-font = 2
 click-left = $HOME/.config/rofi/bin/powermenu

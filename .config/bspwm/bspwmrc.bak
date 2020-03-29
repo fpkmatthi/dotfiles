@@ -22,17 +22,14 @@ nm-applet &
 ## else, if 2 monitors, split evenly
 monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
 if [ "${monitors}" -eq 1 ]; then
-  mons --primary eDP1
   bspc monitor $MONITOR -d I II III IV V VI
 elif [ "${monitors}" -eq 2 ]; then
-  mons --primary eDP-1-1
-  second_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
   bspc monitor $MONITOR -d I II III IV V
   bspc monitor "${second_monitor}" -d VI VII VIII IX X
 elif [ "${monitors}" -eq 3 ]; then
-  mons --primary eDP-1-1
-  second_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
-  third_monitor=$(mons | grep '4:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  second_monitor=$(mons | grep '1:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  third_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
   bspc monitor $MONITOR -d I II III IV V VI
   bspc monitor "${second_monitor}" -d V VI VII
   bspc monitor "${third_monitor}" -d VIII IX X
@@ -57,26 +54,10 @@ bspc config ignore_ewmh_focus    false
 # }}}
 
 # Application rules {{{
-# Terminal {{{
-
-# }}}
-# Web Browsers {{{
-bspc rule -a Firefox desktop='^2' follow=on focus=on
-bspc rule -a Chromium desktop='^2' follow=on focus=on
-# }}}
-# Git Kraken {{{
-bspc rule -a gitkraken desktop='^3' follow=on focus=on
-# }}}
-# Social {{{
-bspc rule -a discord desktop='^4' follow=on focus=on
-# }}}
-# Media {{{
-bspc rule -a Vlc desktop='^5' follow=on focus=on
-# }}}
-# Other {{{
-bspc rule -a "Gimp-2.10" desktop='^6' follow=on focus=on
-bspc rule -a Zathura state=tiled focus=on
-# }}}
+bspc rule -a Chromium desktop='^2' follow=off
+bspc rule -a discord desktop='^4' follow=off #state=fullscreen
+bspc rule -a Vlc desktop='^5' follow=on
+bspc rule -a "Gimp-2.10" desktop='^6' follow=on
 # }}}
 
 # Border color {{{

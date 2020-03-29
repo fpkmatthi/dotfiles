@@ -1,6 +1,5 @@
 # NOTE: Number keys on AZERTY keyboard are marked as
 # {ampersand, eacute, quotedbl, apostrophe, parenleft, section, egrave, exclam, ccedilla, agrave}
-
 # Programs {{{
 super + Return
     $TERMINAL
