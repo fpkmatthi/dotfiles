@@ -62,7 +62,6 @@ export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export GPG_TTY=$(tty)
-export MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
 export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-1920-ha-fpkmatthi/.vault_pass'
 # }}}
 

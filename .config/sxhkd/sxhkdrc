@@ -53,7 +53,7 @@ XF86MonBrightness{Up,Down}
 # Bspwm hotkeys {{{
 # quit/restart bspwm
 super + shift + {e,r}
-    bspc {quit,wm -r}
+    bspc {quit,wm -r} && killall -q sxhkd
 
 # force quit
 super + shift + q

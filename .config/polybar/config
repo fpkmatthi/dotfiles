@@ -33,7 +33,7 @@ foreground-alt = ${xrdb:color7}
 ; Main Bar settings {{{
 [bar/main]
 ; Bar layout {{{
-monitor = ${env:MONITOR:eDP-1-1}
+monitor = ${env:MONITOR}
 width = 96%
 height = 23
 offset-x = 2%

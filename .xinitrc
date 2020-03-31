@@ -6,5 +6,6 @@ export SSH_AUTH_SOCK
 
 if [ -f /usr/bin/bspwm ];then
   /usr/bin/prime-offload
+  export MONITOR=$(xrandr | grep -Eo "eDP.*" | cut -d ' ' -f1)
   exec bspwm
 fi
