@@ -19,7 +19,6 @@ nm-applet &
 
 # Main bspwm config {{{
 # Monitor config {{{
-echo "${MONITOR}" > /home/fpkmatthi/Documents/yeet.txt
 monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
 mons --primary "${MONITOR}"
 if [ $monitors -eq 1 ]; then
