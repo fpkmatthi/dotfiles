@@ -3,16 +3,16 @@
 
 # Oh my zsh plugins {{{
 plugins=(
-  git
-  common-aliases
-  docker
-  git-prompt
-  tmux
-  tmuxinator
-  ufw
-  vagrant
-  encode64
-  fzf
+  # git
+  # common-aliases
+  # docker
+  # git-prompt
+  # tmux
+  # tmuxinator
+  # ufw
+  # vagrant
+  # encode64
+  # fzf
 )
 source $ZSH/oh-my-zsh.sh
 # }}}
@@ -48,16 +48,6 @@ export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 # Aliases' {{{
 # For a full list of active aliases, run `alias`.
 # source $HOME/.config/zsh/aliases.sh
-# }}}
-
-# FZF {{{
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_OPTS="--height 60% --reverse --preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500' --preview-window=down:10"
-export FD_OPTS="--type f --type l --follow --exclude .git" 
-export FZF_DEFAULT_COMMAND="fd $FD_OPTS"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
 
  #Correction {{{
@@ -154,6 +144,14 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 source $HOME/.config/zsh/aliases/custom_aliases.zsh
 # }}}
 
-# Export autocompletion {{{
-
+# FZF {{{
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_OPTS="--height 60% --reverse --preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500' --preview-window=down:10"
+export FD_OPTS="--type f --type l --follow --exclude .git" 
+export FZF_DEFAULT_COMMAND="fd $FD_OPTS"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }}}
+
+
