@@ -6,11 +6,11 @@ set statusbar-basename true
 set incremental-search true
 
 # Keyboard mappings
-unmap f
-map f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
-map <C-i> zoom in
-map <C-o> zoom out
+# unmap f
+# map f toggle_fullscreen
+# map [fullscreen] f toggle_fullscreen
+# map <C-i> zoom in
+# map <C-o> zoom out
 
 # Open document in fit-width mode by default
 set adjust-open "best-fit"

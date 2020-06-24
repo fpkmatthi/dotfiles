@@ -18,6 +18,7 @@ augroup tex_mappings
   autocmd FileType tex inoremap ;tc \textcite{}<++><Esc>F{a
   autocmd FileType tex inoremap ;pc \parencite{}<++><Esc>F{a
   autocmd FileType tex inoremap ;v \verb\|\|<++><Esc>ba
+  autocmd FileType tex inoremap ;bf \begin{frame}[fragile]{}<Enter><++><Enter>\end{frame}<Esc>2k$i
 augroup END
 
 " Rmarkdown

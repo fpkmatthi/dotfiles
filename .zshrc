@@ -1,50 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Oh-My-Zsh {{{
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="theunraveler"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Oh my zsh plugins {{{
 plugins=(
-  encode64
-  extract
-  docker
-  docker-compose
-  fzf
   git
+  common-aliases
+  docker
+  git-prompt
   tmux
   tmuxinator
+  ufw
   vagrant
-  ## warp directory
-  # wd
+  encode64
+  fzf
 )
-
 source $ZSH/oh-my-zsh.sh
 # }}}
 
-# User configuration {{{
-# export MANPATH="/usr/local/man:$MANPATH"
+# Prompt {{{
+PS1="%{$fg[magenta]%}%n%{$fg[green]%}@%{$fg[magenta]%}%M %{$fg[red]%}»%{$reset_color%} "
+RPROMPT="%{$fg[blue]%}%~%{$reset_color%}"
+# }}}
 
+# User configuration {{{
 # You may need to manually set your language environment
 export LANG=en_GB.UTF-8
 
@@ -54,9 +32,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-# }}}
 
-# Shell variables {{{
 export TERMINAL="urxvt"
 export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -66,15 +42,12 @@ export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-192
 # }}}
 
 # Export path {{{
-# export PATH="/opt/anaconda/bin:$PATH"
-# export PATH="/usr/share/terminfo:$PATH"
 export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 # }}}
 
-# Alias' {{{
+# Aliases' {{{
 # For a full list of active aliases, run `alias`.
-# alias config='/usr/bin/git --git-dir=/home/fpkmatthi/.cfg/ --work-tree=/home/fpkmatthi'
-source $HOME/.config/zsh/aliases.sh
+# source $HOME/.config/zsh/aliases.sh
 # }}}
 
 # FZF {{{
@@ -98,10 +71,16 @@ setopt auto_menu # Show completion menu on successive tab press. needs unsetop m
 setopt auto_name_dirs # Zny parameter that is set to the absolute name of a directory immediately becomes a name for that directory
 setopt complete_in_word # Allow completion from within a word/phrase
 unsetopt menu_complete # do not autoselect the first completion entry
+# }}}
 
-autoload -U compinit && compinit
-zmodload -i zsh/complist
+# Colors {{{
+autoload -U compinit promptinit colors
+compinit
+promptinit
+colors
+# }}}
 
+# zstyle stuff {{{
 # man zshcontrib
 zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
 zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
@@ -150,3 +129,31 @@ zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipa
 zstyle '*' single-ignored show
 # }}}
 
+# Set VI bindings {{{
+set -o vi
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# }}}
+
+# Source plugins {{{
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/pkgfile/command-not-found.zsh
+source $HOME/.config/zsh/aliases/custom_aliases.zsh
+# }}}
+
+# Export autocompletion {{{
+
+# }}}

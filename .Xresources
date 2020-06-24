@@ -1,4 +1,7 @@
-*font: xft:Hack:pixelsize=15,xft:Hack\ Nerd\ Font\ Mono:pixelsize=15
+/* *font: xft:Hack:pixelsize=15,xft:Hack\ Nerd\ Font\ Mono:pixelsize=15 */
+#include "/usr/share/nord"
+
+*font: xft:SauceCodePro\ Nerd\ Font:pixelsize=15
 
 Xft.dpi: 96
 Xft.antialias: 1
@@ -14,14 +17,13 @@ URxvt.perl-ext-common: default,matcher
 URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt.url-launcher: xdg-open
-URxvt.depth: 32
-URxvt.letterSpace: 0
+URxvt.letterSpace: 1
 URxvt.transparant: true
+URxvt.depth: 32
 URxvt.shading: 10
+urxvt*blurRadius: 5
 URxvt*termName: rxvt-unicode
 URxvt.keysym.Home: \033[1~
 URxvt.keysym.End: \033[4~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
-;URxvt.font: xft:Hack\ Nerd\ Font\ Mono:pixelsize=15:style=Bold
-
