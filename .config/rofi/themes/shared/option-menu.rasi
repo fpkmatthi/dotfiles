@@ -23,6 +23,7 @@
 #element {
   padding: @option-element-padding;
   background-color: @background-light;
+  border-radius: 200;
 }
 #element.selected {
   background-color: @accent;

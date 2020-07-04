@@ -3,14 +3,14 @@
 
 # Oh my zsh plugins {{{
 plugins=(
-  # git
+  git
   # common-aliases
-  # docker
+  docker
   # git-prompt
   # tmux
   # tmuxinator
   # ufw
-  # vagrant
+  vagrant
   # encode64
   # fzf
 )
@@ -48,7 +48,7 @@ export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 
 # Aliases' {{{
 # For a full list of active aliases, run `alias`.
-# source $HOME/.config/zsh/aliases.sh
+source $HOME/.config/zsh/aliases/custom_aliases.zsh
 # }}}
 
  #Correction {{{

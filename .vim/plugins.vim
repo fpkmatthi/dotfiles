@@ -4,16 +4,16 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'ajh17/VimCompletesMe'
+" Plug 'ajh17/VimCompletesMe'
 Plug 'easymotion/vim-easymotion'
 Plug 'elzr/vim-json'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
-Plug 'jalvesaq/Nvim-R'
+" Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
@@ -22,25 +22,25 @@ Plug 'ludovicchabant/vim-gutentags'
 " Plug 'nicholaides/words-to-avoid.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-eunuch'
-" Plug 'maximbaz/lightline-ale'
+Plug 'tpope/vim-eunuch'
+Plug 'maximbaz/lightline-ale'
 " Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'mhinz/vim-startify'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'PProvost/vim-ps1'
-Plug 'scrooloose/nerdtree'
+" Plug 'PProvost/vim-ps1'
+" Plug 'scrooloose/nerdtree'
 " Plug 'SirVer/ultisnips'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 " }}}
@@ -73,14 +73,6 @@ omap ih <Plug>GitGutterTextObjectInnerPending
 omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
-" }}}
-
-" Lightline Options {{{
-let g:lightline = {
-    \ 'colorscheme': 'PaperColor',
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
-\ }
 " }}}
 
 " Color scheme Options {{{
@@ -125,15 +117,73 @@ map  N <Plug>(easymotion-prev)
 " }}}
 
 " Nvim-R Options {{{
-let R_openpdf = 1
+" let R_openpdf = 1
+" }}}
+
+" Lightline Options {{{
+let g:lightline = {
+  \ 'colorscheme': 'PaperColor',
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' },
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'filename','modified' ],
+  \             [ 'gitbranch', 'gutentagstatus' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'percent' ],
+  \              [ 'fileformat', 'fileencoding', 'filetype' ], 
+  \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head',
+  \   'gutentagstatus': 'gutentags#statusline',
+  \ },
+  \ 'component_expand': {
+  \   'linter_checking': 'lightline#ale#checking',
+  \   'linter_infos': 'lightline#ale#infos',
+  \   'linter_warnings': 'lightline#ale#warnings',
+  \   'linter_errors': 'lightline#ale#errors',
+  \   'linter_ok': 'lightline#ale#ok'
+  \ },
+  \ 'component_type': {
+  \   'linter_checking': 'right',
+  \   'linter_infos': 'right',
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_ok': 'right'
+  \ }
+  \ }
+
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_infos = "\uf129"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
+
+
+" augroup MyGutentagsStatusLineRefresher
+"   autocmd!
+"   autocmd User GutentagsUpdating call lightline#update()
+"   autocmd User GutentagsUpdated call lightline#update()
+" augroup END
+
+" let g:gutentags_trace = 1
 " }}}
 
 " Vim-gutentags Options {{{
-set statusline+=%{gutentags#statusline()}
+let g:gutentags_enabled = 1
+let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = [".git","Vagrantfile","Makefile"]
 let g:gutentags_ctags_tagfile = '.tags'
-let g:gutentags_cache_dir = "~/.ctags/project-tags"
-" let g:gutentags_enabled = 1
+let g:gutentags_cache_dir = "~/.cache/vim/ctags/"
+" Make Gutentags generate tags on save
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+" Let Gutentags generate more info for tags
+" Make Gutentags faster by ignoring unnecessary filetypes
+let g:gutentags_ctags_extra_args = ['--options=/home/fpkmatthi/.config/ctags/ctagsrc.options']
 " }}}
 
 " Vim-commentary Options {{{
@@ -145,7 +195,50 @@ let g:gutentags_cache_dir = "~/.ctags/project-tags"
 " }}}
 
 " Omnisharp Options {{{
+set completeopt=longest,menuone,preview
+let g:omnicomplete_fetch_full_documentation = 1
 let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_popup = 1
+let g:OmniSharp_popup_options = {
+  \ 'winblend': 30,
+  \ 'winhl': 'Normal:Normal'
+  \}
+
+set updatetime=500
+
+sign define OmniSharpCodeActions text=
+
+augroup OSCountCodeActions
+  autocmd!
+  autocmd FileType cs set signcolumn=yes
+  autocmd CursorHold *.cs call OSCountCodeActions()
+augroup END
+
+function! OSCountCodeActions() abort
+  if bufname('%') ==# '' || OmniSharp#FugitiveCheck() | return | endif
+  if !OmniSharp#IsServerRunning() | return | endif
+  let opts = {
+  \ 'CallbackCount': function('s:CBReturnCount'),
+  \ 'CallbackCleanup': {-> execute('sign unplace 99')}
+  \}
+  call OmniSharp#CountCodeActions(opts)
+endfunction
+
+function! s:CBReturnCount(count) abort
+  if a:count
+    let l = getpos('.')[1]
+    let f = expand('%:p')
+    execute ':sign place 99 line='.l.' name=OmniSharpCodeActions file='.f
+  endif
+endfunction
+" }}}
+
+" Ale Options {{{
+let g:ale_linters = {
+  \ 'cs': ['OmniSharp'],
+  \}
 " }}}
 
 " Vimwiki Options {{{
@@ -165,13 +258,9 @@ let g:fzf_action = {
 \ }
 " }}}
 
-" Wal Options {{{
-" colorscheme wal
-" }}}
-
 " Vim-latex-live-preview Options {{{
-map <Leader>c :LLPStartPreview<cr>
-let g:livepreview_previewer = "zathura"
+" map <Leader>c :LLPStartPreview<cr>
+" let g:livepreview_previewer = "zathura"
 " let g:livepreview_cursorhold_recompile = 0
 " }}}
 
