@@ -10,6 +10,7 @@ $HOME/.config/polybar/launch.sh
 $HOME/.config/compton/launch.sh
 $HOME/.config/redshift/launch.sh
 dunst &
+flamehshot &
 # }}}
 
 # Launch trivial apps in the background {{{
