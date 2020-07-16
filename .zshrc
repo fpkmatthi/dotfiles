@@ -40,6 +40,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export GPG_TTY=$(tty)
 export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-1920-ha-fpkmatthi/.vault_pass'
+export _JAVA_AWT_WM_NONREPARENTING=1
 # }}}
 
 # Export path {{{
