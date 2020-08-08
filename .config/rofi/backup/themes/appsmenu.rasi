@@ -1,16 +1,11 @@
 /**
- * This theme is intended for a 8 items list menu with a headerbar.
+ * This theme is intended for a 8x2 items list menu with a headerbar.
  */
-configuration {
-  show-icons: false;
-  columns: 1;
-}
 @import "shared/settings.rasi"
 * {
-  /* background-color: @background; */
-  background-color: #00000000;
+  background-color: @background;
   text-color: @foreground-list;
-  font: @text-font-mono;
+  font: @text-font;
 }
 #window {
   padding: @list-8-window-padding;
@@ -32,10 +27,8 @@ entry {
 }
 #textbox-prompt-colon {
   expand: false;
-  str: " 直 ";
-  text-color: @accent;
-  padding: @network-textbox-prompt-colon-padding;
-  font: @icon-font-small;
+  str: "  : :  ";
+  padding: @apps-textbox-prompt-colon-padding;
 }
 #entry {
   text-color: @accent;

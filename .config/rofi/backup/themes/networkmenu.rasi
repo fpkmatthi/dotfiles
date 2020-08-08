@@ -7,8 +7,7 @@ configuration {
 }
 @import "shared/settings.rasi"
 * {
-  /* background-color: @background; */
-  background-color: #00000000;
+  background-color: @background;
   text-color: @foreground-list;
   font: @text-font-mono;
 }

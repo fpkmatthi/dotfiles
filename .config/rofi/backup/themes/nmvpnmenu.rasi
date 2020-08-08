@@ -1,16 +1,12 @@
 /**
- * This theme is intended for a 8 items list menu with a headerbar.
+ * This theme is intended for a 8 items list on a 1920x1080 pixels resolution.
+ * You may have to tweak values such as the window padding if you have a different resolution.
  */
-configuration {
-  show-icons: false;
-  columns: 1;
-}
 @import "shared/settings.rasi"
 * {
-  /* background-color: @background; */
-  background-color: #00000000;
+  background-color: @background;
   text-color: @foreground-list;
-  font: @text-font-mono;
+  font: @text-font;
 }
 #window {
   padding: @list-8-window-padding;
@@ -27,14 +23,13 @@ entry {
 }
 #prompt {
   padding: @prompt-padding;
-  background-color: @accent;
   text-color: @background;
 }
 #textbox-prompt-colon {
   expand: false;
-  str: " 直 ";
+  str: " 﫸 ";
   text-color: @accent;
-  padding: @network-textbox-prompt-colon-padding;
+  padding: @nmvpn-textbox-prompt-colon-padding;
   font: @icon-font-small;
 }
 #entry {
@@ -51,6 +46,16 @@ entry {
 #element.selected {
   background-color: @background-focus;
   text-color: @accent;
+  border-color: @accent;
+}
+#element.active {
+  background-color: @on;
+  text-color: @background;
+  border-color: @on;
+}
+#element.selected.active {
+  background-color: @off;
+  text-color: @background;
   border-color: @accent;
 }
 

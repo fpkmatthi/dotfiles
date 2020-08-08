@@ -15,11 +15,9 @@
   children: [ horibox ];
 }
 #horibox {
-  background-color: #00000000;
   children: [ listview ];
 }
 #listview {
-  background-color: #00000000;
   layout: horizontal;
 }
 #element {

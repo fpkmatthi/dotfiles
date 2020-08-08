@@ -36,7 +36,7 @@ main() {
             if [ $isVpnProcessRunning = 1 ]; then
                 echo "%{F#fcbe42} ﱾ Busy %{F-}"
             else
-                echo "%{F#f54242} ﱾ %{F-}"
+                echo "%{F#f54242}  ﱾ%{F-}"
             fi
         fi
     fi

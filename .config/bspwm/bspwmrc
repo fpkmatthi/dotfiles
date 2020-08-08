@@ -10,7 +10,7 @@ $HOME/.config/polybar/launch.sh
 $HOME/.config/compton/launch.sh
 $HOME/.config/redshift/launch.sh
 dunst &
-flamehshot &
+flameshot &
 # }}}
 
 # Launch trivial apps in the background {{{
@@ -77,6 +77,7 @@ bspc rule -a Vlc desktop='^5' follow=on focus=on
 # Other {{{
 bspc rule -a "Gimp-2.10" desktop='^6' follow=on focus=on
 bspc rule -a Zathura state=tiled focus=on
+bspc rule -a feh state=floating focus=on
 # }}}
 # }}}
 

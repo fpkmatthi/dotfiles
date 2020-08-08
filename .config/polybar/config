@@ -86,11 +86,12 @@ module-margin-right = 0
 
 ; Fonts {{{
 ;font-0 = Inconsolata:size=12:style=Bold
-font-0 = "Weather Icons:pixelsize=11;1"
+; font-0 = "Weather Icons:pixelsize=11;1"
+font-0 = "Arimo Nerd Font:pixelsize=11;2"
 font-1 = "Arimo Nerd Font:pixelsize=11;2"
-font-2 = "Hack Nerd Font:pixelsize=15;3"
-font-3 = "Hack Nerd Font:pixelsize=16;4"
-font-4 = "Hack Nerd Font:pixelsize=18;7"
+font-2 = "Arimo Nerd Font:pixelsize=15;3"
+font-3 = "Arimo Nerd Font:pixelsize=17;4"
+font-4 = "Arimo Nerd Font:pixelsize=18;5"
 ; }}}
 
 ; Tray {{{
@@ -102,7 +103,6 @@ tray-foreground = ${colors.xcolor7}
 tray-background = ${colors.xcolor1}
 
 wm-restack = bspwm
-;override-redirect = true
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 ; }}}
@@ -151,15 +151,6 @@ module-margin-left = 0
 module-margin-right = 0
 ; }}}
 
-; Fonts {{{
-;font-0 = Inconsolata:size=12:style=Bold
-font-0 = "Weather Icons:pixelsize=11;1"
-font-1 = "Arimo Nerd Font:pixelsize=11;2"
-font-2 = "Hack Nerd Font:pixelsize=15;3"
-font-3 = "Hack Nerd Font:pixelsize=16;4"
-font-4 = "Hack Nerd Font:pixelsize=18;7"
-; }}}
-
 ; Tray {{{
 wm-restack = bspwm
 ;override-redirect = true
@@ -204,22 +195,22 @@ label-focused = 
 label-focused-foreground = ${colors.xcolor7}
 label-focused-background = ${colors.xcolor1}
 label-focused-padding = 1
-label-focused-font = 1
+label-focused-font = 2
 label-occupied = 
 label-occupied-foreground = ${colors.xcolor0}
 label-occupied-background = ${colors.xcolor1}
 label-occupied-padding = 1
-label-occupied-font = 1
+label-occupied-font = 2
 label-urgent = 
 label-urgent-foreground = ${colors.xcolor4}
 label-urgent-background = ${colors.xcolor1}
 label-urgent-padding = 1
-label-urgent-font = 1
+label-urgent-font = 2
 label-empty = 
 label-empty-foreground = ${colors.xcolor0}
 label-empty-background = ${colors.xcolor1}
 label-empty-padding = 1
-label-empty-font = 1
+label-empty-font = 2
 
 ; ws-icon-[0-9]+ = label;icon
 ; Note that the label needs to correspond with the bspwm workspace name
@@ -269,25 +260,25 @@ content-background = ${colors.xcolor1}
 
 [module/RightStripe]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor0}
 content-background = ${colors.xcolor1}
 
 [module/RightArrow1]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor0}
 
 [module/RightArrow2]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor7}
 content-background = ${colors.xcolor0}
 
 [module/RightArrow3]
 type = custom/text
-content = "%{T3}%{T-}"
+content = "%{T4}%{T-}"
 content-foreground = ${colors.xcolor1}
 content-background = ${colors.xcolor7}
 
@@ -342,7 +333,7 @@ toggle-off-foreground = #66
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
+format-prefix = "%{T2}%{T-}"
 label-font = 2
 label = %percentage:2%%
 format-foreground = ${colors.xcolor1}
@@ -353,7 +344,7 @@ format-background = ${colors.xcolor7}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "%{T2} %{T-}"
 label-font = 2
 label = %percentage_used%%
 format-foreground = ${colors.xcolor7}
@@ -410,16 +401,16 @@ type = internal/alsa
 label-font = 2
 ; format-volume = "<label-volume> <bar-volume> "
 format-volume = "<label-volume> "
-label-volume = " 墳"
+label-volume = "  墳"
 ; label-volume-foreground = ${colors.xcolor7}
 format-volume-foreground = ${colors.xcolor0}
 format-volume-background = ${colors.xcolor7}
 
-format-muted-prefix = " 婢"
+format-muted-prefix = "  婢"
 ; format-muted-foreground = ${colors.xcolor7}
 format-muted-foreground = ${colors.xcolor0}
 format-muted-background = ${colors.xcolor7}
-label-muted = " " 
+label-muted = " "
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -446,7 +437,7 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-time-format = %H:%M
+time-format = "%H:%M"
 
 label-font = 2
 format-charging = <animation-charging> <label-charging>
@@ -459,7 +450,7 @@ format-discharging-background = ${colors.xcolor1}
 format-discharging-foreground = ${colors.xcolor7}
 label-discharging-foreground = ${colors.xcolor7}
 
-format-full-prefix = " "
+format-full-prefix = "%{T2} %{T-}"
 format-full-prefix-foreground = #60f542
 format-full-foreground = ${colors.xcolor7}
 format-full-background = ${colors.xcolor1}
@@ -468,18 +459,18 @@ green = #60f542
 red = #f54242
 orange = #f5bc42
 
-ramp-capacity-0 = "%{F#f54242}%{F-}"
+ramp-capacity-0 = "%{T2}%{F#f54242}%{F-}%{T-}"
 ramp-capacity-0-foreground = ${colors.xcolor4}
-ramp-capacity-1 = "%{F#f54242}%{F-}"
+ramp-capacity-1 = "%{T2}%{F#f54242}%{F-}%{T-}"
 ramp-capacity-1-foreground = ${colors.xcolor4}
-ramp-capacity-2 = "%{F#f5bc42}%{F-}"
-ramp-capacity-3 = "%{F#f5bc42}%{F-}"
-ramp-capacity-4 = "%{F#f5bc42}%{F-}"
-ramp-capacity-5 = "%{F#60f542}%{F-}"
-ramp-capacity-6 = "%{F#60f542}%{F-}"
-ramp-capacity-7 = "%{F#60f542}%{F-}"
-ramp-capacity-8 = "%{F#60f542}%{F-}"
-ramp-capacity-9 = "%{F#60f542}%{F-}"
+ramp-capacity-2 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-3 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-4 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-5 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-6 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-7 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-8 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-9 = "%{T2}%{F#60f542}%{F-}%{T-}"
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -515,7 +506,7 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/text
 ; content = "⏼ "
-content = " ⏻  "
+content = "%{T2} ⏻  %{T-}"
 ; click-left = $HOME/.config/polybar/scripts/powermenu.sh
 label-font = 2
 click-left = $HOME/.config/rofi/bin/powermenu
