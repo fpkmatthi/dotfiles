@@ -27,3 +27,35 @@ URxvt.keysym.Home: \033[1~
 URxvt.keysym.End: \033[4~
 URxvt.keysym.KP_Home: \033[1~
 URxvt.keysym.KP_End:  \033[4~
+
+URxvt*foreground:   #D8DEE9
+URxvt*background:   [70]#2E3440
+URxvt*cursorColor:  #E5E9F0
+URxvt*borderColor:  [70]#2E3440
+
+/* *foreground:        #D8DEE9 */
+/* *background:        #2E3440 */
+/* *.foreground:       #D8DEE9 */
+/* *.background:       #2E3440 */
+
+emacs*foreground:   #D8DEE9
+emacs*background:   #2E3440
+
+XTerm*foreground:   #D8DEE9
+XTerm*background:   #2E3440
+XTerm*cursorColor:  #E5E9F0
+
+UXTerm*foreground:  #D8DEE9
+UXTerm*background:  #2E3440
+UXTerm*cursorColor: #E5E9F0
+
+! Xclock colors
+XClock*foreground: #D8DEE9
+XClock*background: #2E3440
+XClock*majorColor:  rgba:b4/8e/ad/ff
+XClock*minorColor:  rgba:b4/8e/ad/ff
+XClock*hourColor:   rgba:b4/8e/ad/ff
+XClock*minuteColor: rgba:b4/8e/ad/ff
+XClock*secondColor: rgba:b4/8e/ad/ff
+
+

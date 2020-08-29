@@ -1,25 +1,5 @@
 #!/bin/sh
 
-# Launch general apps (NOTE: order matters) {{{
-setxkbmap be
-sxhkd &
-feh --bg-scale $HOME/.config/deathstar-landscape.png 
-wal -f nord -a 70 -s -t
-xrdb $HOME/.Xresources
-$HOME/.config/polybar/launch.sh
-$HOME/.config/compton/launch.sh
-$HOME/.config/redshift/launch.sh
-dunst &
-flameshot &
-# }}}
-
-# Launch trivial apps in the background {{{
-xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
-optimus-manager-qt &
-nm-applet &
-sudo "$HOME/.bin/gen-thinkfan-config.sh"
-# }}}
-
 # Main bspwm config {{{
 # Monitor config {{{
 monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
@@ -89,4 +69,25 @@ bspc config active_border_color $color1
 bspc config urgent_border_color $color7
 bspc config presel_feedback_color $color1
 # }}}
+
+# Launch general apps (NOTE: order matters) {{{
+setxkbmap be
+sxhkd &
+feh --bg-scale $HOME/.config/deathstar-landscape.png 
+wal -f nord -a 70 -s -t
+xrdb $HOME/.Xresources
+$HOME/.config/polybar/launch.sh
+$HOME/.config/compton/launch.sh
+$HOME/.config/redshift/launch.sh
+dunst &
+flameshot &
+# }}}
+
+# Launch trivial apps in the background {{{
+xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
+optimus-manager-qt &
+nm-applet &
+sudo "$HOME/.bin/gen-thinkfan-config.sh"
+# }}}
+
 
