@@ -75,7 +75,7 @@ case "$1" in
         while true; do
             network_print
 
-            sleep 60 &
+            sleep 10 &
             wait
         done
         ;;
