@@ -7,6 +7,7 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'ajh17/VimCompletesMe'
 Plug 'easymotion/vim-easymotion'
 Plug 'elzr/vim-json'
+Plug 'ferrine/md-img-paste.vim'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'itchyny/lightline.vim'
 " Plug 'jalvesaq/Nvim-R'
@@ -16,8 +17,8 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'lervag/vimtex'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'lervag/vimtex'
+" Plug 'ludovicchabant/vim-gutentags'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'nicholaides/words-to-avoid.vim'
 Plug 'NLKNguyen/papercolor-theme'
@@ -32,7 +33,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'plasticboy/vim-markdown'
 " Plug 'PotatoesMaster/i3-vim-syntax'
-" Plug 'PProvost/vim-ps1'
+Plug 'PProvost/vim-ps1'
 " Plug 'scrooloose/nerdtree'
 " Plug 'SirVer/ultisnips'
 " Plug 'vim-pandoc/vim-pandoc'
@@ -248,6 +249,27 @@ syntax on
 " nmap <leader><leader>vwnl <Plug>VimwikiNextLink
 let g:vimwiki_list = [{'path': '~/Documents/wiki/src/', 'path_html': '~/Documents/wiki/html/'}]
 let g:vimwiki_list = [{'path': '~/Documents/wiki/src/', 'syntax': 'markdown', 'ext': '.md'}]
+function! VimwikiLinkHandler(link)
+  " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
+  "   1) [[vfile:~/Code/PythonProject/abc123.py]]
+  "   2) [[vfile:./|Wiki Home]]
+  let link = a:link
+  if link =~# '^vfile:'
+    let link = link[1:]
+  else
+    return 0
+  endif
+  let link_infos = vimwiki#base#resolve_link(link)
+  if link_infos.filename == ''
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    exe 'tabnew ' . fnameescape(link_infos.filename)
+    return 1
+  endif
+endfunction
+
+
 " }}}
 
 " FZF Options {{{
@@ -373,6 +395,13 @@ let g:mkdp_port = ''
 " preview page title
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
+" }}}
+
+" Md-img-paste Options {{{
+autocmd FileType markdown,vimwiki nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change them
+let g:mdip_imgdir = 'images'
+let g:mdip_imgname = 'img'
 " }}}
 
 " }}}

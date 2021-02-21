@@ -101,6 +101,9 @@ cursor-click = pointer
 ; Module layout {{{
 modules-center = date
 ; }}}
+; No polybar in fullscreen {{{
+wm-restack = bspwm
+; }}}
 ; }}}
 
 ; Right Bar settings {{{

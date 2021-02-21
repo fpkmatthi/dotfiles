@@ -39,12 +39,13 @@ export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export GPG_TTY=$(tty)
-export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-1920-ha-fpkmatthi/.vault_pass'
+# export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-1920-ha-fpkmatthi/.vault_pass'
+export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Toreon/local_devsecops_test/DevSecOps-Studio/.vault_pass'
 export _JAVA_AWT_WM_NONREPARENTING=1
 # }}}
 
 # Export path {{{
-export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin:$HOME/Documents/blender-2.83.7-linux64"
 # }}}
 
 # Aliases' {{{

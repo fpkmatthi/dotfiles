@@ -3,23 +3,24 @@
 rofi_command="rofi -theme themes/i3layoutmenu.rasi"
 
 # Icons {{{
-stacked=""
+monotile="/﬿"
 tabbed="ﬓ"
-split="﬿"
+split=""
 # }}}
 
-chosen="$(echo -e "$stacked\n$tabbed\n$split" | $rofi_command -dmenu -selected-row 1)"
+chosen="$(echo -e "$monotile\n$tabbed\n$split" | $rofi_command -dmenu -selected-row 1)"
 
 # TODO: switch to bspwm
 case $chosen in
-    $stacked)
-        # i3-msg layout stacked
+    $monotile)
+        # bspwm layout monotile
+        bspc desktop -l next
         ;;
     $tabbed)
-        # i3-msg layout tabbed
+        # bspwm layout tabbed
         ;;
     $split)
-        # i3-msg layout toggle split
+        # bspwm layout toggle split
         ;;
 esac
 
