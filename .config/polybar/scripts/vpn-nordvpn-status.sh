@@ -37,7 +37,7 @@ main() {
             if [ $isVpnProcessRunning = 1 ]; then
                 echo "%{F#fcbe42} ﱾ %{F-}"
             else
-                echo "%{F#f54242} ﱾ%{F-}"
+                echo "%{F#FE6768} ﱾ%{F-}"
             fi
         fi
     fi

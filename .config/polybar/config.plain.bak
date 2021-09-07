@@ -1,0 +1,243 @@
+[colors]
+background = #00000000
+foreground = #dfdfdf
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/main]
+monitor = ${env:MONITOR:eDP1}
+width = 99%
+height = 27
+; offset-x = 1%
+; offset-y = 0%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 10
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "FiraCode Nerd Font Mono:size=11"
+
+modules-left = bspwm filesystem xbacklight pulseaudio
+modules-center = date
+modules-right = temperature memory cpu battery wlan eth
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+[module/bspwm]
+type = internal/bspwm
+; Only show workspaces defined on the same output as the bar
+pin-workspaces = true
+; Create click handler used to focus workspace
+enable-click = true
+; Create scroll handlers used to cycle workspaces
+enable-scroll = true
+; Set the scroll cycle direction
+reverse-scroll = false
+; Define labels
+label-focused = 
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
+label-focused-padding = 1
+label-focused-font = 2
+label-occupied = 
+label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 1
+label-occupied-font = 2
+label-urgent = 
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-padding = 1
+label-urgent-font = 2
+label-empty = 
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+label-empty-padding = 1
+label-empty-font = 2
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label>
+label =  %percentage%%
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "cpu "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage:1%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "ram "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage_used:1%%
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3
+
+format-connected = <label-connected>
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3
+
+format-connected-prefix = " "
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 60
+
+date =
+date-alt = " %d-%m-%Y"
+
+time = %H:%M
+time-alt = %H:%M
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
+label = %time% %date%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = 墳
+label-volume-foreground = ${root.foreground}
+
+label-muted = 婢
+label-muted-foreground = #666
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+label-font = 2
+format-charging = <animation-charging> <label-charging>
+format-charging-foreground = ${colors.foreground}
+format-charging-background = ${colors.background}
+label-charging-foreground = ${colors.foreground}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = ${colors.background}
+format-discharging-foreground = ${colors.foreground}
+label-discharging-foreground = ${colors.foreground}
+
+format-full-prefix = "%{T2} %{T-}"
+format-full-prefix-foreground = #60f542
+format-full-foreground = ${colors.foreground}
+format-full-background = ${colors.background}
+
+green = #60f542
+red = #f54242
+orange = #f5bc42
+
+ramp-capacity-0 = "%{T2}%{F#f54242}%{F-}%{T-}"
+ramp-capacity-0-foreground = ${colors.foreground}
+ramp-capacity-1 = "%{T2}%{F#f54242}%{F-}%{T-}"
+ramp-capacity-1-foreground = ${colors.foreground}
+ramp-capacity-2 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-3 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-4 = "%{T2}%{F#f5bc42}%{F-}%{T-}"
+ramp-capacity-5 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-6 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-7 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-8 = "%{T2}%{F#60f542}%{F-}%{T-}"
+ramp-capacity-9 = "%{T2}%{F#60f542}%{F-}%{T-}"
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 =  
+animation-charging-3 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+interval = 10
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+format-warn = <label-warn>
+
+label =  %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+[settings]
+; screenchange-reload = true
+; compositing-background = source
+; compositing-background = screen
+; compositing-foreground = source
+; compositing-border = over
+; pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

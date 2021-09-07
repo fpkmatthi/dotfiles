@@ -1,5 +1,7 @@
 #!/bin/sh
 
+xrandr > ~/Documents/test.log
+
 # Main bspwm config {{{
 # Monitor config {{{
 monitors=$(mons | grep 'Monitors' | cut -d: -f2 | tr -d '[:space:]')
@@ -76,16 +78,16 @@ sxhkd &
 feh --bg-scale $HOME/.config/deathstar-landscape.png 
 wal -f nord -a 70 -s -t
 xrdb $HOME/.Xresources
+$HOME/.config/picom/launch.sh
 $HOME/.config/polybar/launch.sh
-$HOME/.config/compton/launch.sh
 $HOME/.config/redshift/launch.sh
 dunst &
-flameshot &
+# flameshot &
 # }}}
 
 # Launch trivial apps in the background {{{
-xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" &
-optimus-manager-qt &
+xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" ~/.config/deathstar-landscape.png &
+# optimus-manager-qt &
 nm-applet &
 sudo "$HOME/.bin/gen-thinkfan-config.sh"
 # }}}

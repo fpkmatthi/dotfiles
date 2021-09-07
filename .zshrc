@@ -34,6 +34,7 @@ else
   export EDITOR='nvim'
 fi
 
+# export TERMINAL="alacritty"
 export TERMINAL="urxvt"
 export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"

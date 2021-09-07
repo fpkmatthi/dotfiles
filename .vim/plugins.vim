@@ -17,7 +17,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Plug 'ludovicchabant/vim-gutentags'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'nicholaides/words-to-avoid.vim'
@@ -240,6 +240,7 @@ endfunction
 let g:ale_linters = {
   \ 'cs': ['OmniSharp'],
   \}
+let g:ale_pattern_options = {'\.tex$': {'ale_enabled': 0}}
 " }}}
 
 " Vimwiki Options {{{
@@ -402,6 +403,10 @@ autocmd FileType markdown,vimwiki nmap <buffer><silent> <leader>p :call mdip#Mar
 " there are some defaults for image directory and image name, you can change them
 let g:mdip_imgdir = 'images'
 let g:mdip_imgname = 'img'
+" }}}
+
+" vimtex Options {{{
+let g:tex_flavor = 'latex'
 " }}}
 
 " }}}
