@@ -3,35 +3,15 @@
 # Programs {{{
 super + Return
     $TERMINAL
-
-super + m
-    $TERMINAL -e ncmpcpp
-
-super + w
-    $TERMINAL -e nvim -c VimwikiIndex
-
-super + c
-    $TERMINAL -e calcurse
-
-super + r
-    $TERMINAL -e ranger
-
-super + b
-    $BROWSER
-
-super + n
-    $TERMINAL -e neomutt
+    # urxvt -e zsh -c "tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME"
 # }}}
 
 # Menus, volume, brightness {{{
 super + d
-    $HOME/.config/rofi/bin/appmenu
+    $HOME/.config/rofi/launchers/type-1/launcher.sh
 
 super + x
-    $HOME/.config/rofi/bin/powermenu
-
-super + shift + m
-    $HOME/.config/rofi/bin/mpdmenu
+    $HOME/.config/rofi/powermenu/type-1/powermenu.sh
 
 super + shift + x
     $HOME/.config/bspwm/scripts/lock.sh
@@ -39,9 +19,6 @@ super + shift + x
 # screenshot
 super + shift + p
     $HOME/.config/rofi/bin/scrotmenu
-
-super + shift + n
-    $HOME/.config/rofi/bin/networkmenu
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
     $HOME/.config/sxhkd/scripts/volume-notification.sh {up,down,mute}

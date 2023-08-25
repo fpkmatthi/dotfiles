@@ -82,7 +82,7 @@ scroll-down = bspwm-deskprev
 ; Module layout {{{
 modules-left = bspwm  filesystem
 modules-center = date
-modules-right = nordvpn updates-arch-combined network-networkmanager  memory  cpu  battery  powermenu
+modules-right = nordvpn updates-arch-combined memory cpu  battery #powermenu
 # }}}
 
 ; Cursor layout {{{

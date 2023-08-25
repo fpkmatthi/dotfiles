@@ -13,7 +13,7 @@ usage()
 main() {
     action=$1
     status=$(nordvpn status | grep Status | tr -d ' ' | cut -d ':' -f2)
-    isVpnProcessRunning=$(ps -A | egrep "nordvpn$" | tr -d " \n\r\t " | head -c1 | wc -c)
+    isVpnProcessRunning=$(ps -A | grep -E "nordvpn$" | tr -d " \n\r\t " | head -c1 | wc -c)
 
     if [ "$status" = "Connected" ]; then
         if [ "$action" = "switch" ]; then

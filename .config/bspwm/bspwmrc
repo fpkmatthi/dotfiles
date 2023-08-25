@@ -9,15 +9,19 @@ mons --primary "${MONITOR}"
 if [ $monitors -eq 1 ]; then
   bspc monitor "${MONITOR}" -d I II III IV V VI
 elif [ $monitors -eq 2 ]; then
-  second_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  # MONITOR2=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
   bspc monitor "${MONITOR}" -d I II III IV V
-  bspc monitor "${second_monitor}" -d VI VII VIII IX X
+  bspc monitor "${MONITOR2}" -d VI VII VIII IX X
+  bspc wm --reorder-monitors "${MONITOR2}" "${MONITOR}"
 elif [ $monitors -eq 3 ]; then
-  second_monitor=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
-  third_monitor=$(mons | grep '4:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
-  bspc monitor "${MONITOR}" -d I II III IV
-  bspc monitor "${second_monitor}" -d V VI VII
-  bspc monitor "${third_monitor}" -d VIII IX X
+  # MONITOR2=$(mons | grep '2:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  # MONITOR3=$(mons | grep '4:' | cut -d: -f2 | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1)
+  bspc monitor "${MONITOR3}" -d I II III IV
+  bspc monitor "${MONITOR2}" -d V VI VII
+  bspc monitor "${MONITOR}" -d VIII IX X
+
+  bspc wm --reorder-monitors "${MONITOR3}" "${MONITOR2}" "${MONITOR}"
+  xrandr --output "${MONITOR2}" --mode 1920x1080 --pos 0x0 --rotate normal --output "${MONITOR}" --primary --mode 1920x1080 --pos 3840x0 --rotate normal --output "${MONITOR3}" --mode 1920x1080 --pos 1920x0 --rotate normal
 fi
 # }}}
 
@@ -89,6 +93,13 @@ dunst &
 xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" ~/.config/deathstar-landscape.png &
 # optimus-manager-qt &
 nm-applet &
+
+pkill blueman-applet
+blueman-applet &
+
+pkill pasystray
+pasystray &
+
 sudo "$HOME/.bin/gen-thinkfan-config.sh"
 # }}}
 
