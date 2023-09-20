@@ -4,14 +4,9 @@
 # Oh my zsh plugins {{{
 plugins=(
   git
-  # common-aliases
   docker
-  # git-prompt
   # tmux
-  # tmuxinator
-  # ufw
   vagrant
-  # encode64
   # fzf
 )
 export ZSH="$HOME/.oh-my-zsh"
@@ -35,18 +30,20 @@ else
 fi
 
 # export TERMINAL="alacritty"
-export TERMINAL="urxvt"
+export TERMINAL="alacritty"
 export BROWSER="chromium"
 export XDG_CONFIG_HOME="$HOME/.config"
-export TERM="xterm-256color"
+export TERM="tmux-256color"
 export GPG_TTY=$(tty)
+export HOSTNAME="thinkpadx1"
 # export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Hogent/elnx-1920-ha-fpkmatthi/.vault_pass'
 export ANSIBLE_VAULT_PASSWORD_FILE='/home/fpkmatthi/Repositories/Toreon/local_devsecops_test/DevSecOps-Studio/.vault_pass'
 export _JAVA_AWT_WM_NONREPARENTING=1
 # }}}
 
 # Export path {{{
-export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin:$HOME/Documents/blender-2.83.7-linux64"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.gem/ruby/2.6.0/bin:$HOME/Documents/blender-2.83.7-linux64"
+export PATH="$PATH:/home/fpkmatthi/.gem/ruby/3.0.0/bin"
 # }}}
 
 # Aliases' {{{

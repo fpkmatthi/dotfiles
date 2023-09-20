@@ -4,43 +4,27 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-" Plug 'ajh17/VimCompletesMe'
+Plug 'hashivim/vim-terraform'
 Plug 'easymotion/vim-easymotion'
 Plug 'elzr/vim-json'
-Plug 'ferrine/md-img-paste.vim'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'jalvesaq/Nvim-R'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/goyo.vim'
-" Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'lervag/vimtex'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'neovimhaskell/haskell-vim'
-" Plug 'nicholaides/words-to-avoid.vim'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'maximbaz/lightline-ale'
-" Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'mhinz/vim-startify'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'plasticboy/vim-markdown'
-" Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'PProvost/vim-ps1'
-" Plug 'scrooloose/nerdtree'
-" Plug 'SirVer/ultisnips'
-" Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
-" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
@@ -79,7 +63,7 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 " Color scheme Options {{{
 highlight clear SignColumn
 set background=dark
-colorscheme PaperColor
+colorscheme nord
 let g:PaperColor_Theme_Options = {
 \   'theme': {
 \     'default': {
