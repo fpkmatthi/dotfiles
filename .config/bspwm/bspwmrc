@@ -80,7 +80,7 @@ pkill -f "blueman-applet|pasystray|dunst|flameshot"
 nm-applet &
 setxkbmap us
 # feh --bg-scale $HOME/.config/deathstar-landscape.png 
-feh --bg-scale /home/fpkmatthi/Pictures/Wallpapers/moon.jpg
+feh --bg-scale /home/fpkmatthi/Pictures/Wallpapers/rose-pine/moon.jpg
 xrdb $HOME/.Xresources
 $HOME/.config/picom/launch.sh
 $HOME/.config/polybar/launch.sh

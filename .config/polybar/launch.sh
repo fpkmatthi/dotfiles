@@ -49,11 +49,14 @@ for bar in $BAR_NAMES; do
     PID=$(xprop -name $WM_NAME 2>/dev/null | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}')
     if [ ! $PID ]
     then
-      if [[ "$j" == "$TRAY_OUTPUT" ]]
-      then
-        POLYBAR_TRAY_POS="right" MONITOR=$j polybar $bar &
+      # if [[ "$j" == "$TRAY_OUTPUT" ]]; then
+      echo $j
+      if [[ "$j" == "DVI-I-2-2" ]]; then
+        POLYBAR_TRAY_POS="right" ACTIVEMONITOR=$j polybar $bar &
+      elif [[ "$j" == "eDP-1" ]]; then
+        POLYBAR_TRAY_POS="right" ACTIVEMONITOR=$j polybar $bar &
       else
-        POLYBAR_TRAY_POS="none" MONITOR=$j polybar $bar &
+        POLYBAR_TRAY_POS="none" ACTIVEMONITOR=$j polybar $bar &
       fi
     fi
   done
