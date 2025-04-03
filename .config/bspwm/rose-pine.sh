@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Rosé pine 
+bspc config focused_border_color "#9ccfd8"
+bspc config normal_border_color "#6e6a86"

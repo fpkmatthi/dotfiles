@@ -1,0 +1,100 @@
+#!/bin/sh
+
+# Main bspwm config {{{
+
+source ~/.bin/export-monitors.sh
+
+# Monitor config {{{
+### Monitor vars are set in .xinitrc
+monitors=$(xrandr | grep " connected" | wc -l)
+if [ $monitors -eq 1 ]; then
+  bspc monitor "${MONITOR}" -d 1 2 3 4 5 6
+elif [ $monitors -eq 2 ]; then
+  bspc wm --reorder-monitors "${MONITOR}" "${MONITOR2}"
+  bspc monitor "${MONITOR}" -d 1 2 3 4 5
+  bspc monitor "${MONITOR2}" -d 6 7 8 9 10
+  # sxhkd -c $HOME/.config/sxhkd/sxhkdrc-multiple-monitors &
+elif [ $monitors -eq 3 ]; then
+  bspc wm --reorder-monitors "${MONITOR3}" "${MONITOR2}" "${MONITOR}"
+  bspc monitor "${MONITOR3}" -d 1 2 3 4 5
+  bspc monitor "${MONITOR2}" -d 6 7 8 9 10
+  # sxhkd -c $HOME/.config/sxhkd/sxhkdrc-multiple-monitors &
+fi
+
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
+# }}}
+
+xsetroot -cursor_name left_ptr
+
+bspc config border_width         2
+bspc config window_gap           12
+bspc config split_ratio          0.50
+bspc config top_padding          45
+bspc config bottom_padding       10
+bspc config left_padding         10
+bspc config right_padding        10
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config paddingless_monocle  false
+bspc config single_monocle       true
+bspc config focus_by_distance    true
+bspc config history_aware_focus  true
+bspc config ignore_ewmh_focus    false
+# }}}
+
+# Application rules {{{
+# Web Browsers {{{
+bspc rule -a Chromium desktop='2' follow=on focus=on
+# }}}
+# Git Kraken {{{
+bspc rule -a gitkraken desktop='^3' follow=on focus=on
+# }}}
+# Social {{{
+bspc rule -a discord desktop='4' follow=on focus=on
+# }}}
+# Media {{{
+bspc rule -a Vlc desktop='^5' follow=on focus=on
+# }}}
+
+# Other {{{
+# bspc rule -a "VirtualBox Manager" desktop='3' follow=on focus=on
+bspc rule -a Zathura state=tiled focus=on
+bspc rule -a feh state=floating focus=on
+bspc rule -a "Blueman-manager" state=floating focus=on center=true rectangle=800x600-10+10
+bspc rule -a "blueman-manager" state=floating focus=on center=true rectangle=800x600-10+10
+# }}}
+
+# Border color {{{
+bspc config focused_border_color "#9ccfd8"
+bspc config normal_border_color "#6e6a86"
+# }}}
+
+
+# Launch trivial apps in the background {{{
+xss-lock -- "$HOME/.config/bspwm/scripts/lock.sh" ~/.config/deathstar-landscape.png &
+
+
+# Launch general apps (NOTE: order matters) {{{
+pkill -f "blueman-applet|pasystray|dunst|flameshot"
+
+nm-applet &
+setxkbmap us
+# feh --bg-scale $HOME/.config/deathstar-landscape.png 
+feh --bg-scale /home/fpkmatthi/Pictures/Wallpapers/moon.jpg
+xrdb $HOME/.Xresources
+$HOME/.config/picom/launch.sh
+$HOME/.config/polybar/launch.sh
+$HOME/.config/redshift/launch.sh
+
+blueman-applet &
+pasystray &
+dunst &
+flameshot &
+
+/usr/bin/easyeffects --gapplication-service &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# }}}
+
+wmname LG3D
+

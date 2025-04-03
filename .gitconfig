@@ -1,0 +1,14 @@
+[user]
+	email = matthias@fpkmatthi.xyz
+	user = fpkmatthi
+	name = fpkmatthi
+	signingkey = 849F08012E7AAF76F93992B9A3B3ED44CB2A782E
+[credential]
+	helper = cache --timeout 21600 # 6 hours
+	helper = oauth
+[credential "https://innersource.soprasteria"]
+	com = browser
+[credential "https://innersource.soprasteria.com"]
+	oauthClientId = 6e06ef14b87d4f8103e77736796cf10dbd1d53c26ac8b102eebe984787fb99f1
+[commit]
+	gpgSign = true
