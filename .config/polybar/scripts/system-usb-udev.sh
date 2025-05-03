@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 usb_print() {
     devices=$(lsblk -Jplno NAME,TYPE,RM,SIZE,MOUNTPOINT,VENDOR)

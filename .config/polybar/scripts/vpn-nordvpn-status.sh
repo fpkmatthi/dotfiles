@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 ### TODO: add options like --switch to switch state and --show to show state
 usage()

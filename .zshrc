@@ -56,7 +56,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator/
 
 # Aliases' {{{
 # For a full list of active aliases, run `alias`.
-source $HOME/.config/zsh/aliases.sh
 source $HOME/.config/zsh/aliases/custom_aliases.zsh
 # }}}
 
@@ -152,7 +151,16 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 # export FZF_DEFAULT_OPTS="--height 60% --reverse --preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500' --preview-window=down:10"
 export FZF_DEFAULT_OPTS="
---height 60% --reverse --preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500' --preview-window=down:10"
+--height 60%
+--reverse
+--preview='(bat --style=numbers --color=always --theme=TwoDark {} || cat {}) 2> /dev/null | head -500'
+--preview-window=down:10
+	--color=fg:#908caa,bg:#191724,hl:#ebbcba
+	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+	--color=border:#403d52,header:#31748f,gutter:#191724
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
 	# --color=fg:#908caa,bg:#191724,hl:#ebbcba
 	# --color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
 	# --color=border:#403d52,header:#31748f,gutter:#191724
@@ -177,5 +185,3 @@ eval "$(pyenv virtualenv-init -)"
 # zplug load --verbose
 
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)

@@ -1,0 +1,10 @@
+require "fpkmatthi.options"
+require "fpkmatthi.keymaps"
+require "fpkmatthi.plugins"
+require "fpkmatthi.theme"
+require "fpkmatthi.cmp"
+require "fpkmatthi.lsp"
+require "fpkmatthi.telescope"
+require "fpkmatthi.treesitter"
+require "fpkmatthi.nvim-tree"
+
