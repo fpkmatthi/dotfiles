@@ -66,8 +66,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", termopts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", termopts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", termopts)
 
-
-
 -- Plugins --
 -- Easy-motion
 vim.g.EasyMotion_startofline = 0      -- keep cursor column when doing f/F motions
@@ -82,4 +80,7 @@ keymap('n', 'n',                 '<Plug>(easymotion-next)',        opts)
 keymap('n', 'N',                 '<Plug>(easymotion-prev)',        opts)
 
 -- Nvimtree
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>f", ":Telescope<CR>", opts)

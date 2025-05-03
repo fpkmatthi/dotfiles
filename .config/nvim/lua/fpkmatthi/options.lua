@@ -29,10 +29,11 @@ vim.opt.number = true               -- numbered lines
 vim.opt.relativenumber = true       -- relative lines
 vim.optnumberwidth = 4              -- number col width
 vim.opt.signcolumn = "yes"          -- always show sign column, otherwist it would shift
-vim.opt.wrap = false            -- display lines as 1 long line
-vim.opt.scrolloff = 8           -- TODO
+vim.opt.wrap = true                 -- display lines as 1 long line
+vim.opt.showbreak = "󰘍 "
+vim.opt.scrolloff = 8               -- TODO
 vim.opt.sidescrolloff = 8           -- TODO
-vim.opt.guifont = ""            -- font in nvim gui
+vim.opt.guifont = ""                -- font in nvim gui
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
