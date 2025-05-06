@@ -25,7 +25,7 @@ vim.cmd [[
 ]]
 
 -- Use a protected call so we don't error out on the first use
-local packer = require('packer')
+-- local packer = require('packer')
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
@@ -73,24 +73,25 @@ return packer.startup(function(use)
   -- syntax
   use "kovetskiy/sxhkd-vim"         -- sxhkd syntax
   use "rose-pine/neovim"            -- rose pine theme
+  -- use "mrcjkb/rustaceanvim"
 
   -- cmp
+  use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-cmdline"
   use 'saadparwaiz1/cmp_luasnip'
-  use "hrsh7th/nvim-cmp"
 
   -- snippets
   use 'L3MON4D3/LuaSnip'
-  use "rafamadriz/friendly-snippets"
+  -- use "rafamadriz/friendly-snippets"
 
   -- nvim-lspconfig
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-  -- use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+
 
   -- Telescope
   use "BurntSushi/ripgrep"
@@ -112,6 +113,13 @@ return packer.startup(function(use)
   }
   use "HiPhish/rainbow-delimiters.nvim"
   -- use "nvim-treesitter/playground"
+
+
+  -- Line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 
   -- auto set up config after cloning packer.nvim
   if PACKER_BOOTSTRAP then

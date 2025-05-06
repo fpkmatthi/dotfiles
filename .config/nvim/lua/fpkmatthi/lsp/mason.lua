@@ -7,6 +7,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
   "lua_ls",
+  "rust_analyzer",
 }
 
 local settings = {

@@ -101,6 +101,7 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
+        nvim_lsp = "[nvim_lsp]",
         luasnip = "[LuaSnip]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -109,6 +110,7 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
@@ -125,3 +127,20 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+
+-- local cmp_status_ok, rt = pcall(require, "rust-tools")
+-- if not cmp_status_ok then
+--   return
+-- end
+
+-- rt.setup({
+--   server = {
+--     on_attach = function(_, bufnr)
+--       -- Hover actions
+--       vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+--       -- Code action groups
+--       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+--     end,
+--   },
+-- })

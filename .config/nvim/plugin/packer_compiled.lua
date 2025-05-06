@@ -109,10 +109,10 @@ _G.packer_plugins = {
     path = "/home/fpkmatthi/.local/share/nvim/site/pack/packer/start/fd",
     url = "https://github.com/sharkdp/fd"
   },
-  ["friendly-snippets"] = {
+  ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/fpkmatthi/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
+    path = "/home/fpkmatthi/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
