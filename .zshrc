@@ -31,7 +31,7 @@ else
   export EDITOR='nvim'
 fi
 
-export TERMINAL="alacritty"
+export TERMINAL="kitty"
 export BROWSER="firefox"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
@@ -185,3 +185,11 @@ eval "$(pyenv virtualenv-init -)"
 # zplug load --verbose
 
 
+
+# pnpm
+export PNPM_HOME="/home/fpkmatthi/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
